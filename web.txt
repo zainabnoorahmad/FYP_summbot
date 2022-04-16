@@ -1,0 +1,11 @@
+1. Social Media Dashboard
+This could be an app that combines many social media networks into one interface. 
+So for example you could have Twitter, Facebook, and Instagram all together. 
+That means only having one browser tab opened and one unified user interface.
+
+Programming Level: Advanced
+Project Type: Full-Stack
+
+Front-End: HTML, CSS, TypeScript, React, Redux, React Native
+Back-End: Node.Js, NoSQL
+
