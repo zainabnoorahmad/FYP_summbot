@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/vendor/select2/select2.min.css">
+    <link rel="stylesheet" href="../static/vendor/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/vendor/lightcase/lightcase.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Work+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <link rel="stylesheet" href="../static/style.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript " src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js "></script>
+    <script src="../static/vendor/bootstrap/popper.min.js "></script>
+    <script src="../static/vendor/bootstrap/bootstrap.min.js "></script>
+    <script src="../static/vendor/select2/select2.min.js "></script>
+    <script src="../static/vendor/owlcarousel/owl.carousel.min.js "></script>
+    <script src="../static/vendor/isotope/isotope.min.js "></script>
+    <script src="../static/vendor/lightcase/lightcase.js "></script>
+    <script src="../static/vendor/waypoints/waypoint.min.js "></script>
+    <script src="../static/vendor/countTo/jquery.countTo.js "></script>
+
+    <!-- Main JS -->
+    <script src="../static/js/app.min.js "></script>
+    <script src="//localhost:35729/livereload.js "></script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar-nav-header" class="static-layout">
+    <div class="boxed-page">
+        <nav id="gtco-header-navbar" class="navbar navbar-expand-lg py-4">
+            <div class="container">
+                <span>LOGO</span>
+            </div>
+
+        </nav>
+
+
+        <!-- Input Section -->
+        <div class="jumbotron d-flex align-items-center">
+            <div class="container text-center ">
+                <h1 class="display-2 mb-4 ">SUMMBOT</h1>
+                <div class=" tool">Text Summarization Tool</div>
+
+                <form action="{{url_for('Url')}}" method="post">
+                    <div class="form__group field">
+                        <input type="input" class="form__field" placeholder="Enter your query" name="data" id='name' required />
+                        <label for="name" class="form__label">Enter your query</label>
+                        <button type="submit" name="Submit">Search</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <!-- Counter Section -->
+        <section id="gtco-counter " class="overlay bg-fixed ">
+            <div class="container ">
+                <div class="section-content ">
+                    <div class="row ">
+                        <!-- 1 -->
+                        <div class="col-md-3 col-sm-6 counter-item ">
+                            <i class="lnr lnr-users "></i>
+                            <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 ">5</span>
+                            <h4>Articles</h4>
+                        </div>
+                        <!-- 2 -->
+                        <div class="col-md-3 col-sm-6 counter-item ">
+                            <i class="lnr lnr-briefcase "></i>
+                            <span class="number " data-from="0 " data-to="32 " data-refresh-interval="100 ">10</span>
+                            <h4>keywords</h4>
+                        </div>
+                        <!-- 3 -->
+                        <div class="col-md-3 col-sm-6 counter-item ">
+                            <i class="lnr lnr-heart "></i>
+                            <span class="number " data-from="0 " data-to="38 " data-refresh-interval="100 ">38</span>
+                            <h4>..</h4>
+                        </div>
+                        <!-- 4 -->
+                        <div class="col-md-3 col-sm-6 counter-item ">
+                            <i class="lnr lnr-rocket "></i>
+                            <span class="number " data-from="0 " data-to="29 " data-refresh-interval="100 ">29</span>
+                            <h4>..</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Features Section-->
+        <section id="gtco-features " class="bg-white ">
+            <div class="container ">
+                <div class="section-content ">
+                    <!-- Section Title -->
+                    <div class="title-wrap ">
+                        <h2 class="section-title ">
+                            Features
+                        </h2>
+                        <p class="section-sub-title ">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. <br> pharetra augue. Donec id elit non mi.</p>
+                    </div>
+                    <!-- End of Section Title -->
+                    <div class="row ">
+                        <!-- Features Holder-->
+                        <div class="col-md-12 features-holder ">
+                            <div class="row ">
+                                <!-- Features Item -->
+                                <div class="col-md-4 col-sm-6 feature-item item mb-3 mb-3 text-center ">
+                                    <div class="my-4 ">
+                                        <i class="lnr lnr-cog fs-40 "></i>
+                                    </div>
+                                    <h4>Lorun ipsum</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                </div>
+                                <!-- End of Feature Item -->
+                                <!-- Features Item -->
+                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
+                                    <div class="my-4 ">
+                                        <i class="lnr lnr-frame-contract fs-40 "></i>
+                                    </div>
+                                    <h4>Lorun ipsum</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                </div>
+                                <!-- End of Feature Item -->
+                                <!-- Features Item -->
+                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
+                                    <div class="my-4 ">
+                                        <i class="lnr lnr-bubble fs-40 "></i>
+                                    </div>
+                                    <h4>Lorun ipsum</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                </div>
+                                <!-- End of Feature Item -->
+                                <!-- Features Item -->
+                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
+                                    <div class="my-4 ">
+                                        <i class="lnr lnr-magic-wand fs-40 "></i>
+                                    </div>
+                                    <h4>Lorun ipsum</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                </div>
+                                <!-- End of Feature Item -->
+                                <!-- Features Item -->
+                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
+                                    <div class="my-4 ">
+                                        <i class="lnr lnr-clock fs-40 "></i>
+                                    </div>
+                                    <h4>Lorun ipsum</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                </div>
+                                <!-- End of Feature Item -->
+                                <!-- Features Item -->
+                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
+                                    <div class="my-4 ">
+                                        <i class="lnr lnr-thumbs-up fs-40 "></i>
+                                    </div>
+                                    <h4>Lorun ipsum</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                </div>
+                                <!-- End of Feature Item -->
+                            </div>
+                        </div>
+                        <!-- End of Features Holder-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of Features Section-->
+
+
+
+
+    </div>
+
+    </div>
+
+
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="London" class="tabcontent">
+        <h3>London</h3>
+        <p>London is the capital city of England.</p>
+    </div>
+
+    <div id="Paris" class="tabcontent">
+        <h3>Paris</h3>
+        <p>Paris is the capital of France.</p>
+    </div>
+
+    <div id="Tokyo" class="tabcontent">
+        <h3>Tokyo</h3>
+        <p>Tokyo is the capital of Japan.</p>
+    </div>
+    <div class="container">
+        <h2>Dynamic Tabs</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+            <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h3>HOME</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Menu 3</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
