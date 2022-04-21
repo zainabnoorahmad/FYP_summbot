@@ -17,6 +17,7 @@
     <link href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <link rel="stylesheet" href="../static/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 
 
     <script type="text/javascript " src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js "></script>
@@ -31,6 +32,8 @@
 
     <!-- Main JS -->
     <script src="../static/js/app.min.js "></script>
+    <script src="../static/js/app.js "></script>
+
     <script src="//localhost:35729/livereload.js "></script>
 
 
@@ -56,6 +59,13 @@
                     <div class="form__group field">
                         <input type="input" class="form__field" placeholder="Enter your query" name="data" id='name' required />
                         <label for="name" class="form__label">Enter your query</label>
+
+                        <div class="col-md-5">
+                            <label for="max_words" id="label_max_words"># words in summary: 50</label>
+                            <input name="max_words" type="range" class="custom-range" min="50" max="200" value="50" step="10" id="max_words">
+                        </div>
+
+
                         <button type="submit" name="Submit">Search</button>
 
                     </div>
@@ -71,15 +81,16 @@
                     <div class="row ">
                         <!-- 1 -->
                         <div class="col-md-3 col-sm-6 counter-item ">
-                            <i class="lnr lnr-users "></i>
-                            <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 ">5</span>
-                            <h4>Articles</h4>
+
+                            <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 "><i class="lnr lnr-file-add"></i></span>
+
+                            <h4>Upload File</h4>
                         </div>
                         <!-- 2 -->
                         <div class="col-md-3 col-sm-6 counter-item ">
                             <i class="lnr lnr-briefcase "></i>
                             <span class="number " data-from="0 " data-to="32 " data-refresh-interval="100 ">10</span>
-                            <h4>keywords</h4>
+                            <h4>Give URL</h4>
                         </div>
                         <!-- 3 -->
                         <div class="col-md-3 col-sm-6 counter-item ">

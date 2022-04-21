@@ -13,6 +13,11 @@ sys.path.append('D:/UNI/FYP/FYP_venv/Lib/site-packages/')
 import pymongo
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
+import spacy
+import spacy
+from spacy import displacy
+
+
 
 app=Flask(__name__)
 
@@ -86,6 +91,17 @@ def Extract(urls):
     ]})
     
  #   return urls["urls"][0]["url"]
+def named_entity_relationship(result1):
+    NER = spacy.load("en_core_web_sm")
+    
+    text1= NER(result1)
+    for word in text1.ents:
+        print(word.text,word.label_)
+    #print(text1)
+    return word.text,word.label_
+
+
+
 def Summarize(articles):
     texts=articles["articles"]
     outputs=[]
@@ -108,8 +124,16 @@ def Summarize(articles):
             ##    "max_length":maxL},
 
             })
+
+            
             outputs.append(output[0]["summary_text"])
-        return summ_data(result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5=outputs[4])    
+            text1,label1=named_entity_relationship(outputs[0])
+            NER1=text1+ '' + label1
+            #print(NER1)
+            #print(label1)
+        return render_template("index2.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5=outputs[4],NER1=NER1)
+  
+        ##save in db ----  return summ_data(result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5=outputs[4])    
         ##return render_template("index2.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5=outputs[4])
     else:
         return render_template("index.html")

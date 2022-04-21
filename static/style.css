@@ -860,3 +860,8 @@
  .form__field:invalid {
      box-shadow: none;
  }
+ 
+ #max_words,
+ #num_beams {
+     margin-top: 7px !important;
+ }

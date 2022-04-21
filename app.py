@@ -15,6 +15,9 @@ from flask_pymongo import PyMongo
 from pymongo import MongoClient
 import textFile
 from werkzeug.utils import secure_filename
+import json
+import spacy
+
 
 
 
@@ -23,6 +26,8 @@ app=Flask(__name__)
 
 UPLOAD_FOLDER = 'tmp/'
 ALLOWED_EXTENSIONS = set(['txt'])
+num_words=0
+num_beams=0
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -30,12 +35,15 @@ def allowed_file(filename):
 
 @app.route("/",methods=["GET","POST"])
 def Index():
-    return render_template("textFile.html")
+    return render_template("index.html")
 
 @app.route("/Url",methods=["GET","POST"])
 def Url():
     if req.method=='POST':
         query=req.form['data']
+        num_words = req.form['max_words']
+        #num_beams = req.form['num_beams']
+
         urls=[]
         count=0
         for i in search(query,stop=10):
@@ -97,6 +105,18 @@ def Extract(urls):
         for article in articles
     ]})
     
+
+ #   return urls["urls"][0]["url"]
+def named_entity_relationship(result1):
+    NER = spacy.load("en_core_web_sm")
+    
+    text1= NER(result1)
+    for word in text1.ents:
+        print(word.text,word.label_)
+    #print(text1)
+    return word.text,word.label_
+
+
 def Parse(articles):
     texts=articles["articles"]
     outputs=[]
@@ -105,19 +125,39 @@ def Parse(articles):
             data=texts[j]["article"]
             output=Summarize(data)
             outputs.append(output)
-        return summ_data(result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5=outputs[4])    
+
+        text1,label1=named_entity_relationship(outputs[0])
+        NER1=text1+ '' + label1
+        text2,label2=named_entity_relationship(outputs[1])
+        NER2=text2+ '' + label2  
+        text3,label3=named_entity_relationship(outputs[2])
+        NER3=text3+ '' + label3
+        text4,label4=named_entity_relationship(outputs[3])
+        NER4=text4+ '' + label4
+        text5,label5=named_entity_relationship(outputs[4])
+        NER5=text5+ '' + label5
+
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],NER1=NER1,NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5)
+
+        #return summ_data(result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5=outputs[4])    
     else:
         return render_template("index.html")
 
+    
 
 
+@app.route('/Summarize', methods=['POST'])
 def Summarize(data):
     API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
     headers = {"Authorization": "Bearer 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"}
 
     minL=20
-    maxL=50
-
+    
+    #num_words = request.form['max_words']
+    #num_beams = request.form['num_beams']
+    maxL=num_words
+    print(num_words)
+    
     def query(payload):
         response = requests.post(API_URL, headers=headers, json=payload)
         return response.json()
@@ -125,7 +165,13 @@ def Summarize(data):
     output = query({
                 "inputs":data,
     })
+    #outputs.append(output[0]["summary_text"])
+
     return output[0]["summary_text"]
+
+
+
+ 
     
 
 
@@ -161,7 +207,7 @@ def summ_data(result1,result2,result3,result4,result5):
         db.SummaryTable.insert_one(db_entries)
 
     #return render_template("index.html",result=result)
-    return render_template("index2.html",result1=result1,result2=result2,result3=result3,result4=result4,result5= result5)
+    return render_template("result.html",result1=result1,result2=result2,result3=result3,result4=result4,result5= result5)
 
 
 
