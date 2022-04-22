@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: "Montserrat";
     font-weight: 300;
     font-size: 1.6rem;
     background-color: rgba(67, 55, 76, 0.99);
@@ -901,13 +901,19 @@ footer {
 .result textarea {}
 
 .tab-pane {
+    overflow-y: scroll;
+    scrollbar-color: #1B4A65 #e0e0e0;
+    scrollbar-width: thin;
     background-color: #97749863;
     width: 170%;
     height: 15%;
     position: absolute;
     margin: 10px;
     left: 300px;
-    color: rgb(125, 119, 119);
+    color: rgb(175, 171, 171);
+    font-size: 15px;
+    line-height: 1.9;
+    font-family: man;
 }
 
 #outputtab1 {}

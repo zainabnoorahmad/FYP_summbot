@@ -17,12 +17,16 @@ import textFile
 from werkzeug.utils import secure_filename
 import json
 import spacy
+from spacy import displacy
+from flaskext.markdown import Markdown
 
 
 
 
 
 app=Flask(__name__)
+Markdown(app)
+
 
 UPLOAD_FOLDER = 'tmp/'
 ALLOWED_EXTENSIONS = set(['txt'])
@@ -106,7 +110,12 @@ def Extract(urls):
     ]})
     
 
+
+##---------------for displaying NER-----------------------
+
+##-----------------------------------------------
  #   return urls["urls"][0]["url"]
+HTML_WRAPPER = """<div style=" padding: 0.1rem,overflow: scroll">{}</div>"""
 def named_entity_relationship(result1):
     NER = spacy.load("en_core_web_sm")
     NER1=[]
@@ -115,8 +124,15 @@ def named_entity_relationship(result1):
     for word in text1.ents:
         NER1.append(word.text+ " " +word.label_)
         print(word.text,word.label_)
+
+    html = displacy.render(text1,style="ent")
+    html = html.replace("\n\n","\n")
+    display1 = HTML_WRAPPER.format(html)
     #print(text1)
-    return NER1
+    #spacy.displacy.render(text1, style="ent")
+    # define de app
+ 
+    return result1,display1
 
 
 def Parse(articles):
@@ -131,13 +147,17 @@ def Parse(articles):
         print(outputs[0])
         print("~~~~~~~~~~~~~")        
 
-        NER1=named_entity_relationship(outputs[0])
+        NER1, display1=named_entity_relationship(outputs[0])
+        NER2, display2=named_entity_relationship(outputs[1])
+        NER3, display3=named_entity_relationship(outputs[2])
+        NER4, display4=named_entity_relationship(outputs[3])
+        NER5, display5=named_entity_relationship(outputs[4])
         ## NER1=text1+ '' + label1
-        print("----")
-        NER1str = '\n'.join(map(str, NER1))
+        #print("----")
+        #NER1str = '\n'.join(map(str, NER1))
 
-        print(NER1str)
-        print("----")
+        #print(NER1str)
+        #print("----")
         #text2,label2=named_entity_relationship(outputs[1])
         #NER2=text2+ '' + label2  
         
@@ -149,7 +169,7 @@ def Parse(articles):
         #text5,label5=named_entity_relationship(outputs[4])
         #NER5=text5+ '' + label5
 
-        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],NER1=NER1str)
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5)
 #NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
 
 
