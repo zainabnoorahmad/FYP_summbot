@@ -109,12 +109,14 @@ def Extract(urls):
  #   return urls["urls"][0]["url"]
 def named_entity_relationship(result1):
     NER = spacy.load("en_core_web_sm")
+    NER1=[]
     
     text1= NER(result1)
     for word in text1.ents:
+        NER1.append(word.text+ " " +word.label_)
         print(word.text,word.label_)
     #print(text1)
-    return word.text,word.label_
+    return NER1
 
 
 def Parse(articles):
@@ -125,19 +127,31 @@ def Parse(articles):
             data=texts[j]["article"]
             output=Summarize(data)
             outputs.append(output)
+        print("~~~~~~~~~~~~~")
+        print(outputs[0])
+        print("~~~~~~~~~~~~~")        
 
-        text1,label1=named_entity_relationship(outputs[0])
-        NER1=text1+ '' + label1
-        text2,label2=named_entity_relationship(outputs[1])
-        NER2=text2+ '' + label2  
-        text3,label3=named_entity_relationship(outputs[2])
-        NER3=text3+ '' + label3
-        text4,label4=named_entity_relationship(outputs[3])
-        NER4=text4+ '' + label4
-        text5,label5=named_entity_relationship(outputs[4])
-        NER5=text5+ '' + label5
+        NER1=named_entity_relationship(outputs[0])
+        ## NER1=text1+ '' + label1
+        print("----")
+        NER1str = '\n'.join(map(str, NER1))
 
-        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],NER1=NER1,NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5)
+        print(NER1str)
+        print("----")
+        #text2,label2=named_entity_relationship(outputs[1])
+        #NER2=text2+ '' + label2  
+        
+        #print(text2,label2)
+        #text3,label3=named_entity_relationship(outputs[2])
+        #NER3=text3+ '' + label3
+        #text4,label4=named_entity_relationship(outputs[3])
+        #NER4=text4+ '' + label4
+        #text5,label5=named_entity_relationship(outputs[4])
+        #NER5=text5+ '' + label5
+
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],NER1=NER1str)
+#NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
+
 
         #return summ_data(result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5=outputs[4])    
     else:
