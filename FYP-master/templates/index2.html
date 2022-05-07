@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/vendor/select2/select2.min.css">
+    <link rel="stylesheet" href="../static/vendor/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/vendor/lightcase/lightcase.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Work+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <link rel="stylesheet" href="../static/style2.css" />
+
+
+    <script type="text/javascript " src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js "></script>
+    <script src="../static/vendor/bootstrap/popper.min.js "></script>
+    <script src="../static/vendor/bootstrap/bootstrap.min.js "></script>
+    <script src="../static/vendor/select2/select2.min.js "></script>
+    <script src="../static/vendor/owlcarousel/owl.carousel.min.js "></script>
+    <script src="../static/vendor/isotope/isotope.min.js "></script>
+    <script src="../static/vendor/lightcase/lightcase.js "></script>
+    <script src="../static/vendor/waypoints/waypoint.min.js "></script>
+    <script src="../static/vendor/countTo/jquery.countTo.js "></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="../static/js/app.min.js "></script>
+    <script src="//localhost:35729/livereload.js "></script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar-nav-header" class=" ">
+
+    <div class="boxed-page">
+        <nav id="gtco-header-navbar" class="navbar navbar-expand-lg py-4">
+            <div class="container">
+                <span class="">LOGO</span>
+                <span>SUMMBOT</span>
+            </div>
+
+
+        </nav>
+
+
+        <!-- Input Section -->
+
+
+
+        <div class="result">
+
+
+
+
+            <!--RESULT-1-->
+            <div class="row">
+                <div id="outputtab1" class="outputtab">
+                    <h2>Summary - 1</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Summary</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Keywords</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Named-entity relation</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Audio</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            {{result1}}
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            {{NER1}}
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--RESULT-2-->
+            <div class="row">
+
+                <div id="outputtab2" class="outputtab">
+                    <h2>Dynamic Tabs</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Summary</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Keywords</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Named-entity relation</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Audio</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active"> {{result2}}
+
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--RESULT-3-->
+            <div class="row">
+                <div id="outputtab3" class="outputtab">
+                    <h2>Dynamic Tabs</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Summary</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Keywords</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Named-entity relation</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Audio</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+
+                            {{result3}}
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--RESULT-4-->
+            <div class="row">
+                <div id="outputtab4" class="outputtab">
+                    <h2>Dynamic Tabs</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Summary</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Keywords</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Named-entity relation</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Audio</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+
+                            {{result4}}
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--RESULT-5-->
+            <div class="row">
+                <div id="outputtab5" class="outputtab">
+                    <h2>Dynamic Tabs</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Summary</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Keywords</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Named-entity relation</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Audio</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+
+                            {{result5}}
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+    </script>
+
+</body>
+
+</html>
