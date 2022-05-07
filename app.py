@@ -30,7 +30,7 @@ def allowed_file(filename):
 
 @app.route("/",methods=["GET","POST"])
 def Index():
-    return render_template("textFile.html")
+    return render_template("index.html")
 
 @app.route("/Url",methods=["GET","POST"])
 def Url():
