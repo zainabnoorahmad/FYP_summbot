@@ -243,7 +243,9 @@ def summ_data(result1,result2,result3,result4,result5):
     #return render_template("index.html",result=result)
     return render_template("result.html",result1=result1,result2=result2,result3=result3,result4=result4,result5= result5)
 
-
+@app.route('/fileUpload', methods = ['GET', 'POST'])
+def fileUpload():
+    return render_template('textFile.html')
 
 @app.route('/getFile', methods = ['GET', 'POST'])
 def getFile():
