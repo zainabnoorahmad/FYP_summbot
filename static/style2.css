@@ -1010,4 +1010,10 @@ footer {
   background-color: gray;
 }
 
+.media_button{
+  font-size:18px;
+  background-color: transparent;
+  border:0px}
+.media_button:hover {background: blueviolet;}
+
 /* /////////////////////////////////////////////////////////////////////////*/

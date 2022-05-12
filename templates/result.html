@@ -39,6 +39,13 @@
     <script src="../static/js/app.js "></script>
 
     <script src="//localhost:35729/livereload.js "></script>
+
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=ZJglURT0"></script> <!-- replace with KEY-->
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/558cef9f71.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
 </head>
 
 <body data-spy="scroll" data-target="#navbar-nav-header" class=" ">
@@ -64,13 +71,33 @@
                             <li class='active'><a data-toggle='tab' href='#summary1'>Summary</a>
 
                             </li>
-                            <li><a data-toggle='tab' href='#keyword1'>Keywords</a>
+                            <li><a data-toggle='tab' href='#keyword1'>keyword</a>
 
                             </li>
                             <li>
                                 <a data-toggle='tab' href='#NER1'>Named-entity relation (tooltip)</a>
 
                             </li>
+                            <!--<li>
+                                <a id='read-summary1' data-toggle='tab' href='#summary1'>
+                                <input
+                                type="button" 
+                                style="background-color: transparent;border:0px"
+                                value="Listen to Summary"/>
+                                </a>
+                            </li>-->
+                            <li><a data-toggle='tab' href='#summary1'>
+                            Listen 
+                            <button id='listen-summary1' class='media_button'>
+                            <i class='far fa-play-circle' style='font-size:18px'></i></button>
+                            Pause
+                            <button id='pause-summary1' type="button" class='media_button'>
+                            <i class='far fa-pause-circle' ></i></button>
+                            Resume
+                            <button id='resume-summary1' type="button" style="transform:rotate(90deg);" class='media_button'>
+                            <i class="bi bi-eject" ></i></button></a>
+                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -79,14 +106,25 @@
                 <div id='summary1' class='tab-pane fade in active'>
                     <div class='row' id="audio1">{{result1}}</div>
                    
-                    <div style="background-color: #1B4A65;">url</div>
+                    <div style="background-color: #1B4A65;"><a href=url1>{{url1}}</a></div>
                 </div>
                 <div id='keyword1' class='tab-pane fade'>
-                    <div class='row'>keywords</div>
+                    <div class='row'>{{keywords1}}</div>
                 </div>
                 <div id='NER1' class='tab-pane fade'>
                     <div class='row'>{{display1|markdown}}</div>
                 </div>
+                <script>
+                    $('#listen-summary1').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+                    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+                    var text1= $('#audio1').text();
+                    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+                    });
+                    $('#pause-summary1').click(function(){
+                    responsiveVoice.pause();})
+                    $('#resume-summary1').click(function(){
+                    responsiveVoice.resume();})
+                    </script>
             </div>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -104,21 +142,47 @@
                             <li><a data-toggle='tab' href='#NER2'>Named Entity Relation</a>
 
                             </li>
+                            
+                            <li><a data-toggle='tab' href='#summary2'>
+                                Listen 
+                                <button id='listen-summary2' class='media_button'>
+                                <i class='far fa-play-circle' style='font-size:18px'></i></button>
+                                Pause
+                                <button id='pause-summary2' type="button" class='media_button'>
+                                <i class='far fa-pause-circle' ></i></button>
+                                Resume
+                                <button id='resume-summary2' type="button" style="transform:rotate(90deg);" class='media_button'>
+                                <i class="bi bi-eject" ></i></button></a>
+                                </li>
+                    
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tab-content">
                 <div id='summary2' class='tab-pane fade in active'>
-                    <div class='row'>{{result2}}</div>
+                    <div class='row' id='audio2'>{{result2}}</div>
+                   
+                    <div style="background-color: #1B4A65;"><a href=url2>{{url2}}</a></div>
                 </div>
                 <div id='keyword2' class='tab-pane fade'>
-                    <div class='row'>keyword2</div>
+                    <div class='row'>{{keywords2}}</div>
                 </div>
                 <div id='NER2' class='tab-pane fade'>
                     <div class='row'>{{display2|markdown}}</div>
                 </div>
             </div>
+            <script>
+                $('#listen-summary2').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+                responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+                var text1= $('#audio2').text();
+                responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+                });
+                $('#pause-summary2').click(function(){
+                responsiveVoice.pause();})
+                $('#resume-summary2').click(function(){
+                responsiveVoice.resume();})
+                </script>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
             <!--SUMMARY-3-->
@@ -135,20 +199,43 @@
                             <li><a data-toggle='tab' href='#NER3'>Named Entity Relation</a>
 
                             </li>
+                            <li><a data-toggle='tab' href='#summary3'>
+                                Listen 
+                                <button id='listen-summary3' class='media_button'>
+                                <i class='far fa-play-circle' style='font-size:18px'></i></button>
+                                Pause
+                                <button id='pause-summary3' type="button" class='media_button'>
+                                <i class='far fa-pause-circle' ></i></button>
+                                Resume
+                                <button id='resume-summary3' type="button" style="transform:rotate(90deg);" class='media_button'>
+                                <i class="bi bi-eject" ></i></button></a>
+                                </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tab-content">
-                <div id='summary3' class='tab-pane fade in active'>
-                    <div class='row'>{{result3}}</div>
+                <div id='summary3' id='audio3' class='tab-pane fade in active'>
+                    <div class='row' id="audio3">{{result3}}</div>
+                    <div style="background-color: #1B4A65;"><a href=url3>{{url3}}</a></div>
                 </div>
                 <div id='keyword3' class='tab-pane fade'>
-                    <div class='row'>keyword3</div>
+                    <div class='row'>{{keywords3}}</div>
                 </div>
                 <div id='NER3' class='tab-pane fade'>
                     <div class='row'>{{display3|markdown}}</div>
                 </div>
+                <script>
+                    $('#listen-summary3').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+                    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+                    var text1= $('#audio3').text();
+                    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+                    });
+                    $('#pause-summary3').click(function(){
+                    responsiveVoice.pause();})
+                    $('#resume-summary3').click(function(){
+                    responsiveVoice.resume();})
+                    </script>
             </div>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -166,20 +253,43 @@
                             <li><a data-toggle='tab' href='#NER4'>Named Entity Relation</a>
 
                             </li>
+                            <li><a data-toggle='tab' href='#summary4'>
+                                Listen 
+                                <button id='listen-summary4' class='media_button'>
+                                <i class='far fa-play-circle' style='font-size:18px'></i></button>
+                                Pause
+                                <button id='pause-summary4' type="button" class='media_button'>
+                                <i class='far fa-pause-circle' ></i></button>
+                                Resume
+                                <button id='resume-summary4' type="button" style="transform:rotate(90deg);" class='media_button'>
+                                <i class="bi bi-eject" ></i></button></a>
+                                </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tab-content">
                 <div id='summary4' class='tab-pane fade in active'>
-                    <div class='row'>{{result4}}</div>
+                    <div class='row' id="audio4">{{result4}}</div>
+                    <div style="background-color: #1B4A65;"><a href=url4>{{url4}}</a></div>
                 </div>
                 <div id='keyword4' class='tab-pane fade'>
-                    <div class='row'>keyword4</div>
+                    <div class='row'>{{keywords4}}</div>
                 </div>
                 <div id='NER4' class='tab-pane fade'>
                     <div class='row'>{{display4|markdown}}</div>
                 </div>
+                <script>
+                    $('#listen-summary4').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+                    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+                    var text1= $('#audio4').text();
+                    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+                    });
+                    $('#pause-summary4').click(function(){
+                    responsiveVoice.pause();})
+                    $('#resume-summary4').click(function(){
+                    responsiveVoice.resume();})
+                    </script>
             </div>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -197,21 +307,46 @@
                             <li><a data-toggle='tab' href='#NER5'>Named Entity Relation</a>
 
                             </li>
+                            <li><a data-toggle='tab' href='#summary1'>
+                                Listen 
+                                <button id='listen-summary5' class='media_button'>
+                                <i class='far fa-play-circle' style='font-size:18px'></i></button>
+                                Pause
+                                <button id='pause-summary5' type="button" class='media_button'>
+                                <i class='far fa-pause-circle' ></i></button>
+                                Resume
+                                <button id='resume-summary5' type="button" style="transform:rotate(90deg);" class='media_button'>
+                                <i class="bi bi-eject" ></i></button></a>
+                                </li>
                         </ul>
                     </div>
                 </div>
             </div>
+
             <div class="tab-content">
                 <div id='summary5' class='tab-pane fade in active'>
-                    <div class='row'>{{result5}}</div>
+                    <div class='row' id="audio5">{{result5}}</div>
+                    <div style="background-color: #1B4A65;"><a href=url5>{{url5}}</a></div>
                 </div>
                 <div id='keyword5' class='tab-pane fade'>
-                    <div class='row'>keyword5</div>
+                    <div class='row'>{{keywords5}}</div>
                 </div>
                 <div id='NER5' class='tab-pane fade'>
                     <div class='row'>{{display5|markdown}}</div>
                 </div>
             </div>
+            <script>
+            <script>
+                    $('#listen-summary5').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+                    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+                    var text1= $('#audio5').text();
+                    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+                    });
+                    $('#pause-summary5').click(function(){
+                    responsiveVoice.pause();})
+                    $('#resume-summary5').click(function(){
+                    responsiveVoice.resume();})
+                    </script>
         </div>
         <!-- Input Section -->
 

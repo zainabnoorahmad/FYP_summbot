@@ -19,6 +19,8 @@ import json
 import spacy
 from spacy import displacy
 from flaskext.markdown import Markdown
+from keybert import KeyBERT
+
 
 
 
@@ -32,6 +34,7 @@ UPLOAD_FOLDER = 'tmp/'
 ALLOWED_EXTENSIONS = set(['txt'])
 num_words=0
 num_beams=0
+Sites=[]
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -65,9 +68,11 @@ def Url():
 def Extract(urls):
     
     sites=urls["urls"]
+    
     articles=[]
     for i in range(len(sites)):
         downloaded = trafilatura.fetch_url(sites[i]["url"])
+        Sites.append(sites[i]["url"])
 
         #article has the content extracted using traf
         article=trafilatura.extract(downloaded)
@@ -134,6 +139,15 @@ def named_entity_relationship(result1):
  
     return result1,display1
 
+def keywords_from_article(article_text):
+    article_keywords = []
+    kw_model = KeyBERT()
+    keywords = (kw_model.extract_keywords(article_text, keyphrase_ngram_range=(1, 1), stop_words='english',use_maxsum=True, nr_candidates=20, top_n=10))
+    for keyword in keywords:
+        article_keywords.append(keyword[0])
+    article_keyword_string = ' ,'.join(article_keywords)
+    return article_keyword_string
+
 
 def Parse(articles):
     texts=articles["articles"]
@@ -152,6 +166,12 @@ def Parse(articles):
         NER3, display3=named_entity_relationship(outputs[2])
         NER4, display4=named_entity_relationship(outputs[3])
         NER5, display5=named_entity_relationship(outputs[4])
+
+        keywords1 = keywords_from_article(outputs[0])
+        keywords2 = keywords_from_article(outputs[1])
+        keywords3 = keywords_from_article(outputs[2])
+        keywords4 = keywords_from_article(outputs[3])
+        keywords5 = keywords_from_article(outputs[4])
         ## NER1=text1+ '' + label1
         #print("----")
         #NER1str = '\n'.join(map(str, NER1))
@@ -169,7 +189,7 @@ def Parse(articles):
         #text5,label5=named_entity_relationship(outputs[4])
         #NER5=text5+ '' + label5
 
-        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5)
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=Sites[0],url2=Sites[1],url3=Sites[2],url4=Sites[3],url5=Sites[4])
 #NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
 
 
