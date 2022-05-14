@@ -25,7 +25,6 @@ from keybert import KeyBERT
 
 
 
-
 app=Flask(__name__)
 Markdown(app)
 
@@ -35,6 +34,10 @@ ALLOWED_EXTENSIONS = set(['txt'])
 num_words=0
 num_beams=0
 Sites=[]
+site0=""
+site1=""
+site2=""
+site3=""
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -68,7 +71,10 @@ def Url():
 def Extract(urls):
     
     sites=urls["urls"]
-    
+    site0=sites[0]
+    site1=sites[1]
+    site2=sites[2]
+    site3=sites[3]
     articles=[]
     for i in range(len(sites)):
         downloaded = trafilatura.fetch_url(sites[i]["url"])
@@ -112,7 +118,7 @@ def Extract(urls):
     return Parse({ "articles": [
         {"article": article}
         for article in articles
-    ]})
+    ]},sites)
     
 
 
@@ -120,7 +126,7 @@ def Extract(urls):
 
 ##-----------------------------------------------
  #   return urls["urls"][0]["url"]
-HTML_WRAPPER = """<div style=" padding: 0.1rem,overflow: scroll">{}</div>"""
+HTML_WRAPPER = """<div style=" padding: 3px,overflow-y: scroll;">{}</div>"""
 def named_entity_relationship(result1):
     NER = spacy.load("en_core_web_sm")
     NER1=[]
@@ -148,8 +154,8 @@ def keywords_from_article(article_text):
     article_keyword_string = ' ,'.join(article_keywords)
     return article_keyword_string
 
-
-def Parse(articles):
+def Parse(articles,sites ):
+     
     texts=articles["articles"]
     outputs=[]
     if(texts):
@@ -167,11 +173,14 @@ def Parse(articles):
         NER4, display4=named_entity_relationship(outputs[3])
         NER5, display5=named_entity_relationship(outputs[4])
 
+
+
         keywords1 = keywords_from_article(outputs[0])
         keywords2 = keywords_from_article(outputs[1])
         keywords3 = keywords_from_article(outputs[2])
         keywords4 = keywords_from_article(outputs[3])
         keywords5 = keywords_from_article(outputs[4])
+      
         ## NER1=text1+ '' + label1
         #print("----")
         #NER1str = '\n'.join(map(str, NER1))
@@ -188,8 +197,12 @@ def Parse(articles):
         #NER4=text4+ '' + label4
         #text5,label5=named_entity_relationship(outputs[4])
         #NER5=text5+ '' + label5
+         
+         
+        print(sites[3]['url'])
 
-        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=Sites[0],url2=Sites[1],url3=Sites[2],url4=Sites[3],url5=Sites[4])
+
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=Sites[0],url2=Sites[1],url3=Sites[2],url4=Sites[3],url5=Sites[4])
 #NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
 
 

@@ -37,197 +37,134 @@
     <script src="//localhost:35729/livereload.js "></script>
 
     <script>
-     function startDictation() {
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
-      var recognition = new webkitSpeechRecognition();
+        function startDictation() {
+            if (window.hasOwnProperty('webkitSpeechRecognition')) {
+                var recognition = new webkitSpeechRecognition();
 
-      recognition.continuous = false;
-      recognition.interimResults = false;
+                recognition.continuous = false;
+                recognition.interimResults = false;
 
-      recognition.lang = 'en-US';
-      recognition.start();
+                recognition.lang = 'en-US';
+                recognition.start();
 
-      recognition.onresult = function (e) {
-        document.getElementById('transcript').value = e.results[0][0].transcript;
-        recognition.stop();
-        document.getElementById('labnol').submit();
-      };
+                recognition.onresult = function(e) {
+                    document.getElementById('transcript').value = e.results[0][0].transcript;
+                    recognition.stop();
+                    document.getElementById('labnol').submit();
+                };
 
-      recognition.onerror = function (e) {
-        recognition.stop();
-      };
-    }
-  }
+                recognition.onerror = function(e) {
+                    recognition.stop();
+                };
+            }
+        }
     </script>
 
 
 </head>
 
-<body data-spy="scroll" data-target="#navbar-nav-header" class="static-layout">
-    <div class="boxed-page">
-        <nav id="gtco-header-navbar" class="navbar navbar-expand-lg py-4">
-            <div class="container">
-                <span>LOGO</span>
-            </div>
+<body data-spy=" " data-target=" " class=" ">
+    <div class="main">
+        <div class="  text-center ">
+            <h1 class="display-2 mb-4 summbot ">ᔕᑌᗰᗰᗷOT </h1>
+            <div class=" tool">Text Summarization Tool</div>
 
-        </nav>
+            <form action="{{url_for('Url')}}" method="post">
+                <div class="form__group field">
+                    <!--new input bar bootstrap-->>
+                    <img onclick="startDictation()" src="../static/icons8-microphone-24.png" />
 
+                    <div class="form_input_field">
+                        <i class="fa fa-search"></i>
+                        <div class="input_button">
 
-        <!-- Input Section -->
-        <div class="jumbotron d-flex align-items-center">
-            <div class="container text-center ">
-                <h1 class="display-2 mb-4 ">SUMMBOT</h1>
-                <div class=" tool">Text Summarization Tool</div>
+                            <input type="input" class="form-control form-input  " placeholder="Enter your query..." name="data" id='name' required>
 
-                <form action="{{url_for('Url')}}" method="post">
-                    <div class="form__group field">
-                     
-                        <input type="input" id="transcript" class="form__field" placeholder="Enter your query" name="data" id='name' required />
-                        <img onclick="startDictation()" src="../static/icons8-microphone-24.png" />
-                    
-                        <label for="name" class="form__label">Enter your query</label>
-
-                        <div class="col-md-5">
-                            <label for="max_words" id="label_max_words"># words in summary: 50</label>
-                            <input name="max_words" type="range" class="custom-range" min="50" max="200" value="50" step="10" id="max_words">
+                            <button type="submit" name="Submit">Search</button>
                         </div>
-
-
-                        <button type="submit" name="Submit">Search</button>
-
                     </div>
-                </form>
+
+                    <span class="left-pan"><i class="fa fa-microphone" onclick="startDictation()"></i></span>
+                </div>
 
 
-               
-            </div>
+                <div class="parameters">
+                    <div class="col-md-3 parameter1">
+                        <label for="max_words" id="label_max_words"># words in summary: 50</label>
+                        <input name="max_words" type="range" class="custom-range" min="50" max="200" value="50" step="10" id="max_words">
+                    </div>
+
+                    <div class="col-md-3 parameter2">
+                        <label for="max_summaries" id="Number_of_summaries"># of summaries: 5</label>
+                        <input name="max_summaries" type="range" class="custom-range" min="1" max="5" value="5" step="1" id="max_summaries">
+                    </div>
+                </div>
+
+
+
         </div>
+        </form>
 
-        <!-- Counter Section -->
-        <section id="gtco-counter " class="overlay bg-fixed ">
-            <div class="container ">
-                <div class="section-content ">
-                    <div class="row ">
-                        <!-- 1 -->
-                        <div class="col-md-3 col-sm-6 counter-item ">
 
-                            <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 ">
-                                <a href="{{url_for('fileUpload')}}">
-                                    <i class="lnr lnr-file-add"></i>
-                                </a>
-                            </span>
 
-                            <h4>Upload File</h4>
-                        </div>
-                        <!-- 2 -->
-                        <div class="col-md-3 col-sm-6 counter-item ">
-                            <i class="lnr lnr-briefcase "></i>
-                            <span class="number " data-from="0 " data-to="32 " data-refresh-interval="100 ">10</span>
-                            <h4>Give URL</h4>
-                        </div>
-                        <!-- 3 -->
-                        <div class="col-md-3 col-sm-6 counter-item ">
-                            <i class="lnr lnr-heart "></i>
-                            <span class="number " data-from="0 " data-to="38 " data-refresh-interval="100 ">38</span>
-                            <h4>..</h4>
-                        </div>
-                        <!-- 4 -->
-                        <div class="col-md-3 col-sm-6 counter-item ">
-                            <i class="lnr lnr-rocket "></i>
-                            <span class="number " data-from="0 " data-to="29 " data-refresh-interval="100 ">29</span>
-                            <h4>..</h4>
-                        </div>
-                    </div>
-                </div>
+    </div>
+    </div>
+    <div class="">
+        <p>You can also get summary by</p>
+    </div>
+
+    <div class="summ_container">
+        <div class="boxed-page overlay bg-fixed">
+            <div class="col-md-1 col-sm-6 counter-item ">
+
+                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 ">
+                    <a href="{{url_for('fileUpload')}}">
+                        <i class="lnr lnr-file-add"></i>
+                    </a>
+                </span>
+
+                <h4>Upload File</h4>
             </div>
-        </section>
 
+        </div>
+        <div class="boxed-page overlay bg-fixed">
+            <div class="col-md-1 col-sm-6 counter-item ">
 
-        <!-- Features Section-->
-        <section id="gtco-features " class="bg-white ">
-            <div class="container ">
-                <div class="section-content ">
-                    <!-- Section Title -->
-                    <div class="title-wrap ">
-                        <h2 class="section-title ">
-                            Features
-                        </h2>
-                        <p class="section-sub-title ">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. <br> pharetra augue. Donec id elit non mi.</p>
-                    </div>
-                    <!-- End of Section Title -->
-                    <div class="row ">
-                        <!-- Features Holder-->
-                        <div class="col-md-12 features-holder ">
-                            <div class="row ">
-                                <!-- Features Item -->
-                                <div class="col-md-4 col-sm-6 feature-item item mb-3 mb-3 text-center ">
-                                    <div class="my-4 ">
-                                        <i class="lnr lnr-cog fs-40 "></i>
-                                    </div>
-                                    <h4>Lorun ipsum</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-                                </div>
-                                <!-- End of Feature Item -->
-                                <!-- Features Item -->
-                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
-                                    <div class="my-4 ">
-                                        <i class="lnr lnr-frame-contract fs-40 "></i>
-                                    </div>
-                                    <h4>Lorun ipsum</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-                                </div>
-                                <!-- End of Feature Item -->
-                                <!-- Features Item -->
-                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
-                                    <div class="my-4 ">
-                                        <i class="lnr lnr-bubble fs-40 "></i>
-                                    </div>
-                                    <h4>Lorun ipsum</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-                                </div>
-                                <!-- End of Feature Item -->
-                                <!-- Features Item -->
-                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
-                                    <div class="my-4 ">
-                                        <i class="lnr lnr-magic-wand fs-40 "></i>
-                                    </div>
-                                    <h4>Lorun ipsum</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-                                </div>
-                                <!-- End of Feature Item -->
-                                <!-- Features Item -->
-                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
-                                    <div class="my-4 ">
-                                        <i class="lnr lnr-clock fs-40 "></i>
-                                    </div>
-                                    <h4>Lorun ipsum</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-                                </div>
-                                <!-- End of Feature Item -->
-                                <!-- Features Item -->
-                                <div class="col-md-4 col-sm-6 feature-item item mb-3 text-center ">
-                                    <div class="my-4 ">
-                                        <i class="lnr lnr-thumbs-up fs-40 "></i>
-                                    </div>
-                                    <h4>Lorun ipsum</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-                                </div>
-                                <!-- End of Feature Item -->
-                            </div>
-                        </div>
-                        <!-- End of Features Holder-->
-                    </div>
-                </div>
+                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 ">
+                    <a href="{{url_for('fileUpload')}}">
+                        <i class="lnr lnr-file-add"></i>
+                    </a>
+                </span>
+
+                <h4>Give URL</h4>
             </div>
-        </section>
-        <!-- End of Features Section-->
+
+        </div>
+        <div class="boxed-page overlay bg-fixed">
+            <div class="col-md-1 col-sm-6 counter-item ">
+
+                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 ">
+                    <a href="{{url_for('fileUpload')}}">
+                        <i class="lnr lnr-file-add"></i>
+                    </a>
+                </span>
+
+                <h4>Give Text</h4>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Counter Section -->
+
+
+
 
 
 
 
     </div>
 
-    </div>
 
 </body>
 

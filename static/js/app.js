@@ -30,9 +30,9 @@ jQuery(document).ready(function() {
         $('#label_max_words').text('# words in summary: ' + slider.val())
     })
 
-    var slider2 = $('#num_beams')
+    var slider2 = $('#max_summaries')
     slider2.on('change mousemove', function(evt) {
-        $('#label_num_beams').text('# beam search: ' + slider2.val())
+        $('#Number_of_summaries').text('# of summaries: ' + slider2.val())
     })
 
     $('#btn-process').on('click', function() {
@@ -67,3 +67,84 @@ jQuery(document).ready(function() {
 
 
 })
+
+
+function copyFunction1() {
+    /* Get the text field */
+    var copyText = document.getElementById("summary1");
+    console.log("mm")
+
+
+    let elementText = copyText.textContent; //get the text content from the element
+    navigator.clipboard.writeText(elementText);
+    /* Select the text field */
+
+}
+
+function copyFunction2() {
+    /* Get the text field */
+    var copyText = document.getElementById("summary2");
+    console.log("mm")
+
+
+    let elementText = copyText.textContent; //get the text content from the element
+    navigator.clipboard.writeText(elementText);
+    /* Select the text field */
+
+}
+
+function copyFunction3() {
+    /* Get the text field */
+    var copyText = document.getElementById("summary3");
+    console.log("mm")
+
+
+    let elementText = copyText.textContent; //get the text content from the element
+    navigator.clipboard.writeText(elementText);
+    /* Select the text field */
+
+}
+
+function copyFunction4() {
+    /* Get the text field */
+    var copyText = document.getElementById("summary4");
+    console.log("mm")
+
+
+    let elementText = copyText.textContent; //get the text content from the element
+    navigator.clipboard.writeText(elementText);
+    /* Select the text field */
+
+}
+
+
+
+function showDivSummaries() {
+    console.log("as")
+        //document.getElementsByClassName("home-section2").style.display = "block";
+    var cols = document.getElementsByClassName('home-section2');
+    for (i = 0; i < cols.length; i++) {
+        cols[i].style.display = 'block';
+    }
+
+    var cols = document.getElementsByClassName('home-section3');
+    for (i = 0; i < cols.length; i++) {
+        cols[i].style.display = 'none';
+    }
+
+}
+
+function showDivSummaries2() {
+    console.log("as")
+        //document.getElementsByClassName("home-section2").style.display = "block";
+
+
+    var cols = document.getElementsByClassName('home-section3');
+    for (i = 0; i < cols.length; i++) {
+        cols[i].style.display = 'block';
+    }
+    var cols = document.getElementsByClassName('home-section2');
+    for (i = 0; i < cols.length; i++) {
+        cols[i].style.display = 'none';
+    }
+}
