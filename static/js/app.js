@@ -26,14 +26,19 @@ var token = ""
 jQuery(document).ready(function() {
     var slider = $('#max_words')
     slider.on('change mousemove', function(evt) {
-        console.log("sasd")
+        console.log(slider.val())
         $('#label_max_words').text('# words in summary: ' + slider.val())
     })
 
     var slider2 = $('#max_summaries')
     slider2.on('change mousemove', function(evt) {
         $('#Number_of_summaries').text('# of summaries: ' + slider2.val())
+        console.log(slider2.val())
+
     })
+    $('#Number_of_summaries').text('# of summaries: ' + slider2.val())
+
+
 
     $('#btn-process').on('click', function() {
         input_text = $('#txt_input').val()
@@ -67,6 +72,10 @@ jQuery(document).ready(function() {
 
 
 })
+
+
+
+/*--------------------------------copy functions--------------------------------------*/
 
 
 function copyFunction1() {
@@ -118,6 +127,8 @@ function copyFunction4() {
 }
 
 
+/*---------------------------------side bar elements-------------------------------------------*/
+
 
 function showDivSummaries() {
     console.log("as")
@@ -148,3 +159,29 @@ function showDivSummaries2() {
         cols[i].style.display = 'none';
     }
 }
+
+
+/*-----------------------------------------popupwindow----------------------------- */
+$(window).load(function() {
+    $(".trigger_popup_fricc").click(function() {
+        $('.hover_bkgr_fricc').show();
+    });
+    $('.hover_bkgr_fricc').click(function() {
+        $('.hover_bkgr_fricc').hide();
+    });
+    $('.popupCloseButton').click(function() {
+        $('.hover_bkgr_fricc').hide();
+        console.log("banddd");
+    });
+
+    $(".trigger_popup_fricc2").click(function() {
+        $('.hover_bkgr_fricc2').show();
+        $('.hover_bkgr_fricc').hide();
+    });
+    $('.hover_bkgr_fricc2').click(function() {
+        $('.hover_bkgr_fricc2').hide();
+    });
+    $('.popupCloseButton2').click(function() {
+        $('.hover_bkgr_fricc2').hide();
+    });
+});

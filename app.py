@@ -33,11 +33,19 @@ UPLOAD_FOLDER = 'tmp/'
 ALLOWED_EXTENSIONS = set(['txt'])
 num_words=0
 num_beams=0
-Sites=[]
+website_source=[]
 site0=""
 site1=""
 site2=""
 site3=""
+
+sites=[]
+urls=[]
+used_urls=[]
+outputs=[]
+display1=display2=display3=display4=display5=""
+keywords1=keywords2=keywords3=keywords4=keywords5=""
+
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -51,15 +59,23 @@ def Index():
 def Url():
     if req.method=='POST':
         query=req.form['data']
-        num_words = req.form['max_words']
+        #max_summaries = req.form['max_summaries']
         #num_beams = req.form['num_beams']
+        #print(",ax-words")
+        #print(max_summaries)
 
-        urls=[]
+        
         count=0
-        for i in search(query,stop=10):
-            if(count<5):
+        for i in search(query,stop=15,tld="com",lang='en'):
+            if(count< 10):
                 urls.append(i)
+                #print(urls[i])
             count+=1
+        for url in urls:
+            print(url)
+        
+        
+            
             ##time.sleep(1) #to sleep 1 sec
 
     return Extract({ "urls": [
@@ -69,16 +85,12 @@ def Url():
 
 ##@app.route("/Extract",methods=["GET","POST"])
 def Extract(urls):
-    
     sites=urls["urls"]
-    site0=sites[0]
-    site1=sites[1]
-    site2=sites[2]
-    site3=sites[3]
+
     articles=[]
     for i in range(len(sites)):
         downloaded = trafilatura.fetch_url(sites[i]["url"])
-        Sites.append(sites[i]["url"])
+        website_source.append(sites[i]["url"])
 
         #article has the content extracted using traf
         article=trafilatura.extract(downloaded)
@@ -157,15 +169,27 @@ def keywords_from_article(article_text):
 def Parse(articles,sites ):
      
     texts=articles["articles"]
-    outputs=[]
+    
+    
+    used_urls.append(sites[0])
+    used_urls.append(sites[1])
+    used_urls.append(sites[2])
+    used_urls.append(sites[3])
+
+    print("USEDD-----")
+    print(sites[0])
+    print(sites[1])
+    print(sites[2])
+    print(sites[3])
+
+
+
     if(texts):
         for j in range(len(texts)):
             data=texts[j]["article"]
             output=Summarize(data)
             outputs.append(output)
-        print("~~~~~~~~~~~~~")
-        print(outputs[0])
-        print("~~~~~~~~~~~~~")        
+               
 
         NER1, display1=named_entity_relationship(outputs[0])
         NER2, display2=named_entity_relationship(outputs[1])
@@ -202,7 +226,7 @@ def Parse(articles,sites ):
         print(sites[3]['url'])
 
 
-        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=Sites[0],url2=Sites[1],url3=Sites[2],url4=Sites[3],url5=Sites[4])
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
 #NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
 
 
@@ -292,9 +316,63 @@ def getFile():
                 contents = f.read()
             f.close()
     summary=Summarize(contents)
+
     return render_template("textFile.html",text=summary)
+
+
+
+
+def getText(url):
+        downloaded = trafilatura.fetch_url(url)
+        article=trafilatura.extract(downloaded)
+        article_text = ''
+        bs = BeautifulSoup(downloaded, features="lxml")
+        article = bs.findAll('p')
+
+        for element in article:
+            page = element.getText()
+            result = len(page.split())
+            if result>=15:
+                article_text += '\n' + ''.join(element.findAll(text = True)) 
+
+        article_text = article_text.replace('\n', '') 
+        return article_text
+
+        #articles.append(article_text)
+
+@app.route('/uploadUrl', methods = ['GET', 'POST'])
+def uploadUrl():
+    if request.method == 'POST':
+        url=req.form['url']
+        #print(url)
+        text=getText(url)
+        summary_url=Summarize(text)
+        return render_template("textFile.html",text=summary_url)
+
+@app.route('/replace', methods = ['GET', 'POST'])
+def replace():
+
+    print("----used urls print in replace")
+    print(used_urls[0])
+    print(used_urls[1])
+    print(used_urls[2])
+    print(used_urls[3])
+     
+    print("#######")
+    print(urls[4])
+    new_text=getText(urls[4])
+    new_summary=Summarize(new_text)
+    #return render_template("result.html",result1=outputs[1],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4],new_summary=new_summary)
+    #return render_template("result.html",result1=new_summary)
+    return new_summary
+    
+
 
 
 if __name__=='__main__':
     app.debug=True
     app.run()
+
+
+
+

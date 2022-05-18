@@ -1,43 +1,27 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/vendor/bootstrap/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="../static/vendor/select2/select2.min.css" />
-    <link
-      rel="stylesheet"
-      href="../static/vendor/owlcarousel/owl.carousel.min.css"
-    />
-    <link rel="stylesheet" href="../static/vendor/lightcase/lightcase.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:300,400|Work+Sans:300,400,700"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../static/style.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
-    />
-    <link
-      href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css"
-      rel="stylesheet"
-    />
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../static/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/vendor/select2/select2.min.css">
+    <link rel="stylesheet" href="../static/vendor/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/vendor/lightcase/lightcase.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Work+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <link rel="stylesheet" href="../static/style.css" />
 
-    <script
-      type="text/javascript "
-      src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js "
-    ></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+
+    <script type="text/javascript " src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js "></script>
     <script src="../static/vendor/bootstrap/popper.min.js "></script>
     <script src="../static/vendor/bootstrap/bootstrap.min.js "></script>
     <script src="../static/vendor/select2/select2.min.js "></script>
@@ -49,53 +33,146 @@
 
     <!-- Main JS -->
     <script src="../static/js/app.min.js "></script>
-    <script src="//localhost:35729/livereload.js "></script>
-  </head>
+    <script src="../static/js/app.js "></script>
 
-  <body
-    data-spy="scroll"
-    data-target="#navbar-nav-header"
-    class="static-layout"
-  >
-    <div class="boxed-page">
-      <nav id="gtco-header-navbar" class="navbar navbar-expand-lg py-4">
-        <div class="container">
-          <span>LOGO</span>
-        </div>
-      </nav>
 
-      <!-- Input Section -->
-      <div class="jumbotron d-flex align-items-center">
-        <div class="container text-center">
-          <h1 class="display-2 mb-4">SUMMBOT</h1>
-          <div class="tool">Text Summarization Tool</div>
-          <br />
-          <br />
-          <div class="mb-3">
-            <label for="formFile" class="form-label">Upload a text file</label>
+    <script>
+        $('#listen-summary1').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+            var text1 = $('#audio1').text();
+            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+        });
+        $('#pause-summary1').click(function() {
+            responsiveVoice.pause();
+        })
+        $('#resume-summary1').click(function() {
+            responsiveVoice.resume();
+        })
 
-            <form
-              action="http://localhost:5000/getFile"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <input
-                class="form-control"
-                type="file"
-                name="textFile"
-                id="formFile"
-              />
-              <input class="btn btn-primary" type="submit" value="Submit" />
-            </form>
-          </div>
+        $('#listen-summary2').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+            var text1 = $('#audio2').text();
+            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+        });
+        $('#pause-summary2').click(function() {
+            responsiveVoice.pause();
+        })
+        $('#resume-summary2').click(function() {
+            responsiveVoice.resume();
+        })
 
-          <div class="input-group">
-            <textarea class="form-control" aria-label="With textarea" rows="15">
-{{text}}</textarea
-            >
-          </div>
-        </div>
-      </div>
+        $('#listen-summary3').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+            var text1 = $('#audio3').text();
+            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+        });
+        $('#pause-summary3').click(function() {
+            responsiveVoice.pause();
+        })
+        $('#resume-summary3').click(function() {
+            responsiveVoice.resume();
+        })
+
+        $('#listen-summary4').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+            var text1 = $('#audio4').text();
+            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+        });
+        $('#pause-summary4').click(function() {
+            responsiveVoice.pause();
+        })
+        $('#resume-summary4').click(function() {
+            responsiveVoice.resume();
+        })
+
+        $('#listen-summary5').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+            var text1 = $('#audio5').text();
+            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+        });
+        $('#pause-summary5').click(function() {
+            responsiveVoice.pause();
+        })
+        $('#resume-summary5').click(function() {
+            responsiveVoice.resume();
+        })
+    </script>
+
+
+</head>
+
+<body data-spy=" " data-target=" " class=" ">
+    <div class="main2">
+        <section class="home-section2">
+            <div class="result">
+                <h1 class="display-2 mb-4 summbot ">ᔕᑌᗰᗰᗷOT </h1>
+                <div class=" tool">Text Summarization Tool</div>
+                <div class=" ">
+                    <!--SUMMARY-1-->
+                    <div class="col-sm-9">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <ul class='nav nav-pills'>
+                                    <li class='active'><a data-toggle='tab' href='#summary1'>Summary</a></li>
+                                    <li><a data-toggle='tab' href='#keyword1'>Keywords</a></li>
+                                    <li><a data-toggle='tab' href='#NER1'>Named-entity relation</a></li>
+                                    <li><a data-toggle='tab' href='#listen_audio1'>Listen Audio</a></li>
+                                    <span id='clickableAwesomeFont'><i class="fa fa-regular fa-copy" onclick="copyFunction1()"></i></span>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class='tab-pane fade in active' id="summary1">
+                                        {{text}}
+                                    </div>
+                                    <div id='keyword1' class='tab-pane fade'>
+                                        <div class='row'>keywords1</div>
+                                    </div>
+                                    <div id='NER1' class='tab-pane fade'>
+                                        <div class='row'>display1|markdown</div>
+                                    </div>
+                                    <div id='listen_audio1' class='tab-pane fade'>
+
+                                        <div class='row'>Listen
+                                            <button id='listen-summary1' class='media_button'>
+                                            <i class='far fa-play-circle' style='font-size:18px'></i></button> Pause
+                                            <button id='pause-summary1' type="button" class='media_button'>
+                                            <i class='far fa-pause-circle' ></i></button> Resume
+                                            <button id='resume-summary1' type="button" style="transform:rotate(90deg);" class='media_button'>
+                                            <i class="bi bi-eject" ></i></button></a>
+                                        </div>
+                                        {{text}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <!-- Input Section -->
+
+        </section>
     </div>
-  </body>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>
+
+
+</body>
+
 </html>

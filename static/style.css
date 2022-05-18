@@ -28,8 +28,24 @@ body {
     font-size: 1.6rem;
     background-color: rgba(67, 55, 76, 0.99);
     background-image: -webkit-linear-gradient(top left, #360033, #0b8793 2100px);
-    background-image: linear-gradient(to bottom right, #4e0a4aa1 25%, 75%, #0a757fe8 2100px);
+    background-image: linear-gradient(to bottom right, #73296fa1 25%, 75%, #0a757fe8 2100px);
     margin-bottom: 30px;
+}
+
+.tool {
+    font-family: "Lato", sans-serif;
+    color: white;
+    font-size: 25px;
+    top: -3px;
+    position: relative;
+}
+
+.tool2 {
+    font-family: "Lato", sans-serif;
+    color: white;
+    font-size: 17px;
+    top: 41px;
+    position: relative;
 }
 
 body::before {
@@ -60,9 +76,137 @@ body:after {}
 .summ_container {
     display: flex;
     flex-direction: row;
-    margin-left: 307px;
-    margin-top: 8px;
+    margin-left: 390px;
+    margin-top: -28px;
+    position: relative;
+    z-index: 366;
 }
+
+
+/*-----------popup window---------------------------------------------------------------*/
+
+
+/* Popup box BEGIN */
+
+.hover_bkgr_fricc {
+    background: rgba(0, 0, 0, .4);
+    cursor: pointer;
+    height: 447px;
+    position: absolute;
+    text-align: center;
+    top: -408px;
+    width: 760px;
+    display: none;
+    margin-left: -363px;
+    color: black;
+    left: 239px;
+}
+
+.hover_bkgr_fricc2 {
+    background: rgba(0, 0, 0, .4);
+    cursor: pointer;
+    height: 447px;
+    position: absolute;
+    text-align: center;
+    top: -408px;
+    width: 760px;
+    display: none;
+    margin-left: -363px;
+    color: black;
+    left: 239px;
+}
+
+.hover_bkgr_fricc .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.hover_bkgr_fricc2 .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.hover_bkgr_fricc>div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: 387px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 82%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+
+.hover_bkgr_fricc2>div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: 387px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 82%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+
+.popupCloseButton {
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+
+.trigger_popup_fricc {
+    cursor: pointer;
+    font-size: 20px;
+    margin: -4px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.trigger_popup_fricc2 {
+    cursor: pointer;
+    font-size: 20px;
+    margin: -4px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.popup_content:p {
+    color: black;
+    left: 233px;
+}
+
+.popup_content form {
+    left: 233px;
+    position: relative;
+}
+
+
+/* Popup box BEGIN */
+
+
+/*-----------popup window---------------------------------------------------------------*/
 
 @media (min-width: 1200px) {
     .boxed-page {
@@ -306,13 +450,20 @@ a {
 }
 
 .summbot {
-    font-size: 100px;
+    font-size: 149px;
     color: white;
-    top: 55px;
+    top: 23px;
     position: relative;
+    font-family: 'Grenze Gotisch', cursive;
 }
 
 .main {
+    z-index: 110;
+    position: relative;
+}
+
+.main2 {
+    height: 613px;
     z-index: 110;
     position: relative;
 }
@@ -521,11 +672,11 @@ a {
 
 .counter-item>i {
     display: block;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .counter-item .number {
-    font-size: 59px;
+    font-size: 50px;
     font-weight: 400;
     display: block;
 }
@@ -811,11 +962,29 @@ footer {
 
 /*search bar*/
 
+.text_style {
+    color: white;
+    margin-left: 595px;
+    font-size: 25px;
+    top: -28px;
+    position: relative;
+}
+
+.text_style hr {
+    width: 60px;
+    color: white;
+    position: relative;
+    height: 1px;
+    left: -66px;
+    position: absolute;
+    background-color: white;
+}
+
 .form__group {
     padding: 15px 0 0;
     width: 50%;
-    margin-left: 305px;
-    margin-top: 56px;
+    margin-left: 376px;
+    margin-top: 30px;
 }
 
 .form_input_field .input_button {
@@ -827,7 +996,7 @@ footer {
     padding: 6px;
     background-color: white;
     color: #9ca3af;
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
     font-size: 1.8rem;
     width: 113px;
     margin-top: -1px;
@@ -842,7 +1011,7 @@ footer {
     padding: 6px;
     background-color: white;
     color: #9ca3af;
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
     font-size: 1.8rem;
     width: 99px;
     margin-top: 7px;
@@ -883,7 +1052,7 @@ footer {
     transition: 0.2s;
     font-size: 1rem;
     color: #360033;
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
     font-size: 1rem;
 }
 
@@ -911,15 +1080,20 @@ footer {
     margin-top: 7px !important;
 }
 
+#clickableAwesomeFont {
+    cursor: pointer
+}
+
 .form__group .form_input_field .fa-search {
     position: absolute;
-    top: 269px;
-    left: 318px;
+    top: 319px;
+    left: 389px;
     color: #9ca3af;
 }
 
 .form_input_field .fa-microphone {
     color: #9ca3af;
+    left: 500px;
 }
 
 .form_input_field span {
@@ -960,7 +1134,7 @@ footer {
 }
 
 .parameters {
-    left: 399px;
+    left: 482px;
     position: relative;
     top: -54px;
     display: flex;
@@ -979,3 +1153,163 @@ footer {
 }
 
 .custom-range::-moz-range-thumb {}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    height: 371px;
+    width: 664px;
+}
+
+.url {
+    bottom: 0px;
+    position: inherit;
+    font-size: 10px;
+    color: black;
+}
+
+.tab-pane {
+    overflow-y: scroll;
+    scrollbar-color: #1b4a65 #e0e0e0;
+    scrollbar-width: thin;
+    background-color: #97749863;
+    width: 79%;
+    height: 100%;
+    position: absolute;
+    left: 115px;
+    color: rgb(175, 171, 171);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+#outputtab1 {}
+
+#outputtab {
+    margin-top: 440px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    z-index: 400;
+    position: absolute;
+}
+
+.tabcontent {
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+}
+
+.nav-pills {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+
+.nav li {
+    font-size: 25px;
+    width: 50%;
+}
+
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 10%;
+    height: 300px;
+}
+
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 70%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #11998e;
+}
+
+.nav li {
+    color: white;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav li a {
+    color: rgba(40, 34, 34, 0.797);
+}
+
+.nav li a:hover {
+    background-color: rgba(199, 191, 191, 0.797);
+    color: black;
+}
+
+
+/* Create an active/current "tab button" class */
+
+.nav li a:active {
+    background-color: rgba(199, 191, 191, 0.797);
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+    color: #fff;
+    background-image: linear-gradient(to bottom right, #4e0a4aa1 25%, 75%, #0a757fe8 2100px);
+    width: fit-content;
+}
+
+.result {
+    font-family: "Lato", sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    position: absolute;
+    top: 54px;
+    z-index: 400;
+    margin-left: 363px;
+}
+
+.result div {
+    margin: 10px;
+    margin-right: 87px;
+    margin-left: 0px;
+    margin-top: -4px;
+}
+
+#clickableAwesomeFont {
+    cursor: pointer
+}
+
+.ml9 {
+    position: relative;
+    font-weight: 200;
+    font-size: 4em;
+}
+
+.ml9 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+}
+
+.ml9 .letter {
+    transform-origin: 50% 100%;
+    display: inline-block;
+    line-height: 1em;
+}

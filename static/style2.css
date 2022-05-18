@@ -8,20 +8,44 @@ body {
     font-weight: 300;
     font-size: 1.6rem;
     background-color: white;
+    background-image: url("../static/img/section_pattern01.png");
     margin-bottom: 30px;
+    background-position: 936px 50px;
+    opacity: 1;
 }
 
 body::before {
-    position: absolute;
-    z-index: 100;
-    top: 0;
     left: 0;
     display: block;
-    width: 100%;
-    height: 500px;
+    background-position: -1px 46px;
+    background-position-x: -1px;
+    background-position-y: 46px;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 727px;
+    height: 100%;
+    position: fixed;
+    opacity: 10;
 }
 
-body:after {}
+body:after {
+    left: 0;
+    display: block;
+    background-position: -1px 46px;
+    background-position-x: -1px;
+    background-position-y: 46px;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 727px;
+    height: 100%;
+    position: fixed;
+    background-image: url("../static/img/section_pattern01.png");
+    margin-bottom: 30px;
+    background-position: 1902px 50px;
+    opacity: 1;
+}
 
 .boxed-page {
     margin: 0 auto;
@@ -788,7 +812,7 @@ footer {
     background-color: transparent;
     color: #000;
     border: 2px solid #67367e67;
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
     font-size: 1rem;
     /* Green */
 }
@@ -810,7 +834,7 @@ footer {
     font-size: 1rem;
     cursor: text;
     top: 20px;
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
 }
 
 .form__field::placeholder {
@@ -823,7 +847,7 @@ footer {
     transition: 0.2s;
     font-size: 1rem;
     color: #360033;
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
     font-size: 1rem;
 }
 
@@ -832,7 +856,7 @@ footer {
     border-width: 3px;
     border-image: linear-gradient(to right, #5e4a56, #e7ae21);
     border-image-slice: 1;
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
     font-size: 1rem;
 }
 
@@ -855,13 +879,13 @@ footer {
 }
 
 .result {
-    font-family: "Montserrat";
+    font-family: "Lato", sans-serif;
     font-weight: lighter;
     font-size: 15px;
     position: absolute;
-    top: 100px;
+    top: 154px;
     z-index: 400;
-    margin-left: 72px;
+    margin-left: 142px;
 }
 
 .result div {
@@ -886,16 +910,18 @@ footer {
 
 .tab-pane {
     overflow-y: scroll;
-    scrollbar-color: #1b4a65 #e0e0e0;
+    scrollbar-color: #763d86 #e0e0e0;
     scrollbar-width: thin;
-    background-color: #97749863;
+    background-color: #47295500;
     width: 79%;
     height: 100%;
     position: absolute;
-    left: 115px;
+    left: 110px;
     color: rgb(175, 171, 171);
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.9;
+    border: 2px solid #692f6b;
+    padding: 17px;
 }
 
 #outputtab1 {}
@@ -974,8 +1000,9 @@ footer {
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:focus,
 .nav-pills>li.active>a:hover {
-    color: black;
-    background-color: gray;
+    color: #fff;
+    background-image: linear-gradient(to bottom right, #73296fa1 25%, 75%, #0a757fe8 2100px);
+    width: fit-content;
 }
 
 
@@ -1001,9 +1028,6 @@ footer {
     top: 0;
     height: 100%;
     width: 78px;
-    background-color: rgba(27, 15, 36, 0.99);
-    background-image: -webkit-linear-gradient(top left, #360033, #0b8793 2100px);
-    background-image: linear-gradient(to bottom right, #4e0a4aa1 25%, 75%, #0a757fe8 2100px);
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
@@ -1014,10 +1038,14 @@ footer {
 }
 
 .sidebar .logo-details {
-    height: 60px;
+    height: 50px;
     display: flex;
     align-items: center;
     position: relative;
+    background-color: rgba(27, 15, 36, 0.99);
+    background-image: -webkit-linear-gradient(top left, #360033, #0b8793 2100px);
+    background-image: linear-gradient(to bottom right, #73296fa1 25%, 75%, #0a757fe8 2100px);
+    border-radius: 10px;
 }
 
 .sidebar .logo-details .icon {
@@ -1248,7 +1276,9 @@ footer {
 
 .home-section {
     position: relative;
-    background: #E4E9F7;
+    background-color: rgba(27, 15, 36, 0.99);
+    background-image: -webkit-linear-gradient(top left, #360033, #0b8793 2100px);
+    background-image: linear-gradient(to bottom right, #73296fa1 25%, 75%, #0a757fe8 2100px);
     min-height: 100vh;
     top: 0;
     left: 30px;
@@ -1278,10 +1308,13 @@ footer {
 
 .home-section2 {
     width: 100%;
-    height: 605px;
-    left: 50px;
+    height: 665px;
+    left: 0px;
     position: absolute;
-    top: 10px;
+    top: 0px;
+    background-color: rgba(27, 15, 36, 0.99);
+    background-image: -webkit-linear-gradient(top left, #360033, #0b8793 2100px);
+    background-image: linear-gradient(to bottom right, #73296fa1 25%, 75%, #0a757fe8 2100px);
 }
 
 .home-section2-text {
@@ -1295,12 +1328,19 @@ footer {
     width: 100%;
     height: 605px;
     background-color: aqua;
+    background-color: rgba(27, 15, 36, 0.99);
+    background-image: -webkit-linear-gradient(top left, #360033, #0b8793 2100px);
+    background-image: linear-gradient(to bottom right, #73296fa1 25%, 75%, #0a757fe8 2100px);
 }
 
 .home-section3-text {
     font-size: 30px;
     left: 104px;
     position: absolute;
+}
+
+#NER1 {
+    width: 30%;
 }
 
 .tab-content {}
@@ -1384,4 +1424,13 @@ footer {
 
 .media_button:hover {
     background: blueviolet;
+}
+
+.jumbotron .container {
+    position: relative;
+    background-image: url("../static/img/section_pattern01.png");
+}
+
+.summ4 {
+    display: inline;
 }
