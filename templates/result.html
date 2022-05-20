@@ -49,19 +49,34 @@
 
 
     <script>
-        function replacebutton() {
+        function replacebutton1() {
             $.ajax({
-                url: "{{url_for('replace')}}",
+                url: "{{url_for('replace1')}}",
                 type: "get",
                 success: function(response) {
                     $("#summary1").html(response);
-                    console.log("here")
+                    console.log("here...")
                 },
                 error: function(xhr) {
                     //Do Something to handle error
                 }
             });
         }
+
+        function replacebutton2() {
+            $.ajax({
+                url: "{{url_for('replace2')}}",
+                type: "get",
+                success: function(response) {
+                    $("#summary2").html(response);
+                    console.log("here2...")
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+            });
+        }
+
         var slider = $('#max_words')
         slider.on('change mousemove', function(evt) {
             $('#label_max_words').text('# words in summary: ' + slider.val())
@@ -104,66 +119,6 @@
                 closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
             }
         }
-        /////////////////audio 
-        $('#listen-summary1').click(function() { // Attach this function to all mouseenter events for 'a' tags 
-            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
-            var text1 = $('#audio1').text();
-            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
-        });
-        $('#pause-summary1').click(function() {
-            responsiveVoice.pause();
-        })
-        $('#resume-summary1').click(function() {
-            responsiveVoice.resume();
-        })
-
-        $('#listen-summary2').click(function() { // Attach this function to all mouseenter events for 'a' tags 
-            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
-            var text1 = $('#audio2').text();
-            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
-        });
-        $('#pause-summary2').click(function() {
-            responsiveVoice.pause();
-        })
-        $('#resume-summary2').click(function() {
-            responsiveVoice.resume();
-        })
-
-        $('#listen-summary3').click(function() { // Attach this function to all mouseenter events for 'a' tags 
-            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
-            var text1 = $('#audio3').text();
-            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
-        });
-        $('#pause-summary3').click(function() {
-            responsiveVoice.pause();
-        })
-        $('#resume-summary3').click(function() {
-            responsiveVoice.resume();
-        })
-
-        $('#listen-summary4').click(function() { // Attach this function to all mouseenter events for 'a' tags 
-            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
-            var text1 = $('#audio4').text();
-            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
-        });
-        $('#pause-summary4').click(function() {
-            responsiveVoice.pause();
-        })
-        $('#resume-summary4').click(function() {
-            responsiveVoice.resume();
-        })
-
-        $('#listen-summary5').click(function() { // Attach this function to all mouseenter events for 'a' tags 
-            responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
-            var text1 = $('#audio5').text();
-            responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
-        });
-        $('#pause-summary5').click(function() {
-            responsiveVoice.pause();
-        })
-        $('#resume-summary5').click(function() {
-            responsiveVoice.resume();
-        })
     </script>
 </head>
 
@@ -214,12 +169,8 @@
             <div class="row">
                 <!--SUMMARY-1-->
                 <div class="summ1 col-sm-5">
-                    <form action="{{url_for('replace')}}" id="form_file" name="fileinfo" method="POST" enctype="multipart/form-data">
-                        <input class="btn btn-primary" type="submit" value="Submit" name="Replace" />
 
-
-                    </form>
-                    <button id="replace_button" onclick="replacebutton()">Replace</button> {{new_summary}}}
+                    <button id="replace_button" onclick="replacebutton1()">Replace</button> {{new_summary1}}}
 
                     <div class="card">
                         <div class="card-body">
@@ -232,9 +183,9 @@
                                 <span id='clickableAwesomeFont'><i class="fa fa-regular fa-copy" onclick="copyFunction1()"></i></span>
                             </ul>
                             <div class="tab-content">
-                                <div class='tab-pane fade in active' id="summary1">
-                                    <div class='row'>{{result1}}
-                                        <div class="url">{{site0}}</div>
+                                <div class='tab-pane fade in active'>
+                                    <div class='row' id="summary1">{{result1}}
+                                        <div class="url">{{url0}}</div>
                                     </div>
                                 </div>
                                 <div id='keyword1' class='tab-pane fade'>
@@ -261,6 +212,8 @@
                 </div>
                 <!--SUMMARY-2-->
                 <div class="summ2 col-sm-5">
+                    <button id="replace_button" onclick="replacebutton2()">Replace</button> {{new_summary2}}}
+
                     <div class="card">
                         <div class="card-body ">
 
@@ -276,7 +229,7 @@
                             <div class="tab-content">
                                 <div class='tab-pane fade in active'>
                                     <div class='row' id="summary2">{{result2}}
-                                        <div class="url ">{{site1}}</div>
+                                        <div class="url ">{{url1}}</div>
                                     </div>
 
 
@@ -326,7 +279,7 @@
                             <div class="tab-content">
                                 <div class='tab-pane fade in active'>
                                     <div class='row' id='summary3'>{{result3}}
-                                        <div class="url ">{{site2}}</div>
+                                        <div class="url ">{{url2}}</div>
                                     </div>
 
 
@@ -374,7 +327,7 @@
                             <div class="tab-content">
                                 <div class='tab-pane fade in active'>
                                     <div class='row' id='summary4'>{{result4}}
-                                        <div class="url ">{{site3}}</div>
+                                        <div class="url ">{{url3}}</div>
                                     </div>
 
 

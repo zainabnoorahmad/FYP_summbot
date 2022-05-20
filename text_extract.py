@@ -20,18 +20,18 @@ from bs4 import BeautifulSoup
 
 import requests
 
-url = 'https://www.sas.com/en_us/insights/analytics/machine-learning.html'
-res = requests.get(url)
-html_page = res.content
+#url = 'https://www.creativebloq.com/features/what-are-nfts'
+#res = requests.get(url)
+#html_page = res.content
 
-#downloaded = trafilatura.fetch_url('https://www.sas.com/en_us/insights/analytics/machine-learning.html')
+downloaded = trafilatura.fetch_url('https://www.merriam-webster.com/dictionary/summarization')
 
 #article has the content extracted using traf
-#article=trafilatura.extract(downloaded)
+article=trafilatura.extract(downloaded)
 
 
 article_text = ''
-bs = BeautifulSoup(html_page, features="lxml")
+bs = BeautifulSoup(downloaded, features="lxml")
 article = bs.findAll('p')
 
  

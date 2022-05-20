@@ -22,6 +22,26 @@ from flaskext.markdown import Markdown
 from keybert import KeyBERT
 
 
+###--url fetch
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")
+
+options = Options()
+options.headless = True  # hide GUI
+options.add_argument("--window-size=1920,1080")  # set window size to native GUI size
+options.add_argument("start-maximized")  # ensure window is full-screen
+
+driver = webdriver.Chrome("chromedriver.exe",options=options)
+driver.set_window_position(0,-1000)
 
 
 
@@ -64,20 +84,47 @@ def Url():
         #print(",ax-words")
         #print(max_summaries)
 
-        
-        count=0
-        for i in search(query,stop=15,tld="com",lang='en'):
-            if(count< 10):
-                urls.append(i)
-                #print(urls[i])
-            count+=1
-        for url in urls:
-            print(url)
-        
-        
-            
-            ##time.sleep(1) #to sleep 1 sec
+        #new method
+        n_pages = 2
+        for page in range(1, n_pages):
+            url = "http://www.google.com/search?q=" + query + "&start=" +      str((page - 1) * 10)
+            driver.get(url)
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+            # soup = BeautifulSoup(r.text, 'html.parser')
 
+            search = soup.find_all('div', class_="yuRUbf")
+            for h in search:
+                urls.append(h.a.get('href'))
+
+
+        search = soup.find_all('div', class_="yuRUbf")
+
+
+        for h in search:
+            urls.append(h.a.get('href'))
+
+        google_domains = ( 
+                        'https://webcache.googleusercontent.', 
+                        'http://webcache.googleusercontent.', 
+                        'https://policies.google.',
+                        'https://support.google.',
+                        'https://maps.google.',
+                        'https://www.youtube.',
+                        'https://economictimes.indiatimes.',
+                        'https://www.binance.',
+                        'https://www.theverge.',
+                        'https://www.merriam-webster')
+
+        for url in urls[:]:
+                if url.startswith(google_domains):
+                        urls.remove(url)
+        #print("------------------------------------------------------")
+        #for link in urls:
+        #    if(link==" "):
+        #        print("empty")
+        #    else:
+        #        print(link)
+       
     return Extract({ "urls": [
         {"url": url}
         for url in urls
@@ -87,14 +134,36 @@ def Url():
 def Extract(urls):
     sites=urls["urls"]
 
+    #for site in sites:
+     #   print(site)
+
     articles=[]
-    for i in range(len(sites)):
-        downloaded = trafilatura.fetch_url(sites[i]["url"])
-        website_source.append(sites[i]["url"])
+    #print(len(sites))
+    working_urls=[]
+    for i in range(10):
+
+        try:
+            #print(sites[i]["url"])
+
+            if(sites[i]["url"]==" "):
+                print("------------------------yes")
+                continue
+
+            #res = requests.get(sites[i]["url"])
+        #html_page = res.content
+
+            downloaded = trafilatura.fetch_url(sites[i]["url"])
+            if(len(downloaded)==0):
+                print("emptyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+            #print("done")
+            working_urls.append(sites[i]["url"])
+            website_source.append(sites[i]["url"])
 
         #article has the content extracted using traf
-        article=trafilatura.extract(downloaded)
-
+           
+        except TypeError:
+            continue
+        
 
         article_text = ''
         bs = BeautifulSoup(downloaded, features="lxml")
@@ -103,34 +172,21 @@ def Extract(urls):
  
 
         for element in article:
-            #print(element)
             page = element.getText()
             result = len(page.split())
-            #print(result)
 
             if result>=15:
-            #print(page)
-
-            #print(result)
                 article_text += '\n' + ''.join(element.findAll(text = True))
-
-
-            # article_text += '\n' + ''.join(element.findAll(text = True))
-            #print(article_text)
-
-    
-            #print("There are " + str(result) + " words.") 
 
         article_text = article_text.replace('\n', '') 
         
         articles.append(article_text)
-        #article_paragraphs = article.findAll('p')
-        #print(article_paragraphs)
+
         
     return Parse({ "articles": [
         {"article": article}
         for article in articles
-    ]},sites)
+    ]})
     
 
 
@@ -146,7 +202,7 @@ def named_entity_relationship(result1):
     text1= NER(result1)
     for word in text1.ents:
         NER1.append(word.text+ " " +word.label_)
-        print(word.text,word.label_)
+        #print(word.text,word.label_)
 
     html = displacy.render(text1,style="ent")
     html = html.replace("\n\n","\n")
@@ -166,21 +222,23 @@ def keywords_from_article(article_text):
     article_keyword_string = ' ,'.join(article_keywords)
     return article_keyword_string
 
-def Parse(articles,sites ):
+def Parse(articles):
      
     texts=articles["articles"]
     
     
-    used_urls.append(sites[0])
-    used_urls.append(sites[1])
-    used_urls.append(sites[2])
-    used_urls.append(sites[3])
+    #used_urls.append(sites[0])
+    #used_urls.append(sites[1])
+    #used_urls.append(sites[2])
+    #used_urls.append(sites[3])
+    #used_urls.append(sites[4])
 
-    print("USEDD-----")
-    print(sites[0])
-    print(sites[1])
-    print(sites[2])
-    print(sites[3])
+    #print("USEDD-----")
+    #print(sites[0])
+    #print(sites[1])
+    ##print(sites[2])
+    #print(sites[3])
+    #print(sites[4])
 
 
 
@@ -199,11 +257,11 @@ def Parse(articles,sites ):
 
 
 
-        keywords1 = keywords_from_article(outputs[0])
-        keywords2 = keywords_from_article(outputs[1])
-        keywords3 = keywords_from_article(outputs[2])
-        keywords4 = keywords_from_article(outputs[3])
-        keywords5 = keywords_from_article(outputs[4])
+        keywords1 = "keywords1"
+        keywords2 = "keywords1"
+        keywords3 = "keywords1"
+        keywords4 = "keywords1"
+        keywords5 = "keywords1"
       
         ## NER1=text1+ '' + label1
         #print("----")
@@ -223,10 +281,11 @@ def Parse(articles,sites ):
         #NER5=text5+ '' + label5
          
          
-        print(sites[3]['url'])
+        #print(sites[3]['url'])
 
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
 
-        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
+        #return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
 #NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
 
 
@@ -349,24 +408,40 @@ def uploadUrl():
         summary_url=Summarize(text)
         return render_template("textFile.html",text=summary_url)
 
-@app.route('/replace', methods = ['GET', 'POST'])
-def replace():
-
-    print("----used urls print in replace")
-    print(used_urls[0])
-    print(used_urls[1])
-    print(used_urls[2])
-    print(used_urls[3])
+@app.route('/replace1', methods = ['GET', 'POST'])
+def replace1():
+    print("1")
+    #print("----used urls print in replace")
+   # print(used_urls[0])
+    #print(used_urls[1])
+    #print(used_urls[2])
+    #print(used_urls[3])
      
-    print("#######")
-    print(urls[4])
+    #print("#######")
+    #print(urls[4])
     new_text=getText(urls[4])
     new_summary=Summarize(new_text)
     #return render_template("result.html",result1=outputs[1],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4],new_summary=new_summary)
     #return render_template("result.html",result1=new_summary)
     return new_summary
     
-
+@app.route('/replace2', methods = ['GET', 'POST'])
+def replace2():
+    print("2")
+    #print("----used urls print in replace")
+   # print(used_urls[0])
+    #print(used_urls[1])
+    #print(used_urls[2])
+    #print(used_urls[3])
+     
+    #print("#######")
+    #print(urls[4])
+    new_text=getText(urls[5])
+    new_summary2=Summarize(new_text)
+    #return render_template("result.html",result1=outputs[1],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4],new_summary=new_summary)
+    #return render_template("result.html",result1=new_summary)
+    return new_summary2
+    
 
 
 if __name__=='__main__':

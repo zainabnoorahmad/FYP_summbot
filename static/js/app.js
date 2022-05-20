@@ -185,3 +185,67 @@ $(window).load(function() {
         $('.hover_bkgr_fricc2').hide();
     });
 });
+
+
+/////////////////audio 
+$("#listen-summary1").click(function() { // Attach this function to all mouseenter events for 'a' tags 
+    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+    var text1 = $('#audio1').text();
+    responsiveVoice.speak(text1);
+    // Speak the text contents of all nodes within the current 'a' tag
+    console.log("....here")
+});
+$('#pause-summary1').click(function() {
+    responsiveVoice.pause();
+})
+$('#resume-summary1').click(function() {
+    responsiveVoice.resume();
+})
+
+$('#listen-summary2').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+    var text1 = $('#audio2').text();
+    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+});
+$('#pause-summary2').click(function() {
+    responsiveVoice.pause();
+})
+$('#resume-summary2').click(function() {
+    responsiveVoice.resume();
+})
+
+$('#listen-summary3').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+    var text1 = $('#audio3').text();
+    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+});
+$('#pause-summary3').click(function() {
+    responsiveVoice.pause();
+})
+$('#resume-summary3').click(function() {
+    responsiveVoice.resume();
+})
+
+$('#listen-summary4').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+    var text1 = $('#audio4').text();
+    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+});
+$('#pause-summary4').click(function() {
+    responsiveVoice.pause();
+})
+$('#resume-summary4').click(function() {
+    responsiveVoice.resume();
+})
+
+$('#listen-summary5').click(function() { // Attach this function to all mouseenter events for 'a' tags 
+    responsiveVoice.cancel(); // Cancel anything else that may currently be speaking
+    var text1 = $('#audio5').text();
+    responsiveVoice.speak(text1); // Speak the text contents of all nodes within the current 'a' tag
+});
+$('#pause-summary5').click(function() {
+    responsiveVoice.pause();
+})
+$('#resume-summary5').click(function() {
+    responsiveVoice.resume();
+})
