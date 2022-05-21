@@ -937,7 +937,6 @@ footer {
 
 .tab-pane {
     overflow-y: scroll;
-    scrollbar-color: #763d86 #e0e0e0;
     scrollbar-width: thin;
     background-color: #47295500;
     width: 79%;
@@ -949,6 +948,8 @@ footer {
     line-height: 1.9;
     border: 2px solid #692f6b;
     padding: 17px;
+    scrollbar-width: 20px;
+    scrollbar-color: #763d86;
 }
 
 #outputtab1 {}

@@ -170,10 +170,8 @@
     </script>
 </head>
 
-<body data-spy="scroll" data-target="#navbar-nav-header" class=" ">
-    <div class="sidebar">
+<body>
 
-    </div>
 
 
 
@@ -185,7 +183,7 @@
 
 
     <section class="home-section2">
-        <h1 class="display-2 mb-4 summbot "><a href="index.html">SummBot</a> </h1>
+        <h1 class="display-2 mb-4 summbot"><a href="index.html">SummBot</a> </h1>
         <div class="vertical"></div>
         <div class="tool">Text Summarization Tool</div>
         <div class="topic">{{unprocessed_query}}</div>
@@ -210,25 +208,26 @@
                                 <div class="row">
                                     <span id='clickableAwesomeFont' style="padding-left:10px;padding-top:10px;padding-right: 14px;"><i class="fa fa-regular fa-copy" onclick="copyFunction1()" data-toggle="tooltip" data-placement="top" title="COPY"></i></span>
 
-                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton1()" data-toggle="tooltip" data-placement="top" title="EXCHANGE SUMMARY"></i></span>
+                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton1()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
                                 </div>
-
                             </ul>
-                            <div class="tab-content ">
+                            <div class="tab-content">
                                 <div id="summary1" class='tab-pane fade in active'>
 
-                                    <div class='row' id="summary1">{{result1}}
-                                        <div class="url ">{{url0}}</div>
+                                    <div class='row'>{{result1}}
+                                        <div class="url">{{url1}}</div>
                                     </div>
+
                                 </div>
                                 <div id='keyword1' class='tab-pane fade'>
                                     <div class='row'>{{keywords1}}</div>
                                 </div>
                                 <div id='NER1' class='tab-pane fade'>
+
                                     <div class='row' id="oldNER1">{{display1|markdown}}</div>
                                     <div class='row' id="newNER1">{{new_display1|markdown}}</div>
-
                                 </div>
+
                                 <div id='listen_audio1' class='tab-pane fade'>
 
                                     <div class='row'>Listen
@@ -244,14 +243,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!--SUMMARY-2-->
-                <div class="summ2 col-sm-5 ">
+                <div class="summ2 col-sm-5">
 
 
-                    <div class="card ">
-                        <div class="card-body ">
+                    <div class="card">
+                        <div class="card-body">
 
                             <ul class='nav nav-pills'>
                                 <li class='active'><a data-toggle='tab' href='#summary2'>Summary-2</a></li>
@@ -265,11 +263,11 @@
                                     <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton2()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
                                 </div>
                             </ul>
-                            <div class="tab-content ">
+                            <div class="tab-content">
                                 <div id="summary2" class='tab-pane fade in active'>
 
                                     <div class='row' id="summary2">{{result2}}
-                                        <div class="url ">{{url1}}</div>
+                                        <div class="url">{{url1}}</div>
                                     </div>
 
                                 </div>
@@ -300,13 +298,13 @@
                 </div>
             </div>
 
-            <div class="row ">
+            <div class="row">
                 <!--SUMMARY-3-->
-                <div class="summ3 col-sm-5 ">
+                <div class="summ3 col-sm-5">
 
 
-                    <div class="card ">
-                        <div class="card-body ">
+                    <div class="card">
+                        <div class="card-body">
 
                             <ul class='nav nav-pills'>
                                 <li class='active'><a data-toggle='tab' href='#summary3'>Summary-3</a></li>
@@ -320,11 +318,11 @@
                                     <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton3()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
                                 </div>
                             </ul>
-                            <div class="tab-content ">
+                            <div class="tab-content">
                                 <div id="summary3" class='tab-pane fade in active'>
 
                                     <div class='row' id="summary3">{{result3}}
-                                        <div class="url ">{{url2}}</div>
+                                        <div class="url">{{url2}}</div>
                                     </div>
 
                                 </div>
@@ -357,11 +355,11 @@
                 </div>
                 <!--SUMMARY-4-->
 
-                <div class="summ4 col-sm-5 " id=" ">
+                <div class="summ4 col-sm-5" id=" ">
 
 
-                    <div class="card ">
-                        <div class="card-body ">
+                    <div class="card">
+                        <div class="card-body">
 
                             <ul class='nav nav-pills'>
                                 <li class='active'><a data-toggle='tab' href='#summary4'>Summary-4</a></li>
@@ -375,11 +373,11 @@
                                 </div>
 
                             </ul>
-                            <div class="tab-content ">
+                            <div class="tab-content">
                                 <div id="summary4" class='tab-pane fade in active'>
 
                                     <div class='row' id="summary4">{{result4}}
-                                        <div class="url ">{{url3}}</div>
+                                        <div class="url">{{url3}}</div>
                                     </div>
 
                                 </div>
@@ -417,12 +415,7 @@
 
     </section>
 
-    <section class="home-section3 " id="Summaries ">
-        <div class="home-section3-text ">Dashboard3</div>
 
-        <!-- Input Section -->
-
-    </section>
 
 
 
@@ -432,7 +425,5 @@
 
 
 </body>
-
-</html>
 
 </html>
