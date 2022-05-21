@@ -410,8 +410,10 @@ def uploadUrl():
         summary_url=Summarize(text)
         return render_template("textFile.html",text=summary_url)
 
+
 @app.route('/replace1', methods = ['GET', 'POST'])
 def replace1():
+    
     print("1")
     new_text=getText(urls[4])
     new_summary1=Summarize(new_text)

@@ -79,6 +79,7 @@ function copyFunction1() {
 
     let elementText = copyText.textContent; //get the text content from the element
     navigator.clipboard.writeText(elementText);
+    toastr.success('Copied!');
     /* Select the text field */
 }
 
@@ -89,6 +90,7 @@ function copyFunction2() {
 
     let elementText = copyText.textContent; //get the text content from the element
     navigator.clipboard.writeText(elementText);
+    toastr.success('Copied!');
     /* Select the text field */
 }
 
@@ -99,6 +101,7 @@ function copyFunction3() {
 
     let elementText = copyText.textContent; //get the text content from the element
     navigator.clipboard.writeText(elementText);
+    toastr.success('Copied!');
     /* Select the text field */
 }
 
@@ -109,6 +112,7 @@ function copyFunction4() {
 
     let elementText = copyText.textContent; //get the text content from the element
     navigator.clipboard.writeText(elementText);
+    toastr.success('Copied!');
     /* Select the text field */
 }
 

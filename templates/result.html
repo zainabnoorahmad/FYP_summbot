@@ -50,79 +50,119 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+
 
     <script>
+        var counter1 = 0
+        var counter2 = 0
+        var counter3 = 0
+        var counter4 = 0
+
         function replacebutton1() {
 
-            document.getElementById("newNER1").style.display = "block";
-            document.getElementById("oldNER1").style.display = "none";
+            if (counter1 == 0) {
+                console.log("counter is 0")
+                document.getElementById("newNER1").style.display = "block";
+                document.getElementById("oldNER1").style.display = "none";
 
-            $.ajax({
-                url: "{{url_for('replace1')}}",
-                type: "get",
+                $.ajax({
+                    url: "{{url_for('replace1')}}",
+                    type: "get",
 
-                success: function(response) {
-                    $("#summary1").html(response);
-                    console.log("here...")
-                },
-                error: function(xhr) {
-                    //Do Something to handle error
-                }
-            });
+                    success: function(response) {
+                        $("#summary1").html(response);
+                        console.log("here...")
+                    },
+                    error: function(xhr) {
+                        //Do Something to handle error
+                    }
+                });
+                counter1 = counter1 + 1
+            } else {
+                console.log("counter is 1")
+                toastr.error('Summary can be exchanged only once');
+            }
+
+
         }
 
         function replacebutton2() {
-            document.getElementById("newNER2").style.display = "block";
-            document.getElementById("oldNER2").style.display = "none";
+            if (counter2 == 0) {
 
-            $.ajax({
-                url: "{{url_for('replace2')}}",
-                type: "get",
+                document.getElementById("newNER2").style.display = "block";
+                document.getElementById("oldNER2").style.display = "none";
 
-                success: function(response) {
-                    $("#summary2").html(response);
-                    console.log("here...")
-                },
-                error: function(xhr) {
-                    //Do Something to handle error
-                }
-            });
+                $.ajax({
+                    url: "{{url_for('replace2')}}",
+                    type: "get",
+
+                    success: function(response) {
+                        $("#summary2").html(response);
+                        console.log("here...")
+                    },
+                    error: function(xhr) {
+                        //Do Something to handle error
+                    }
+                });
+                counter2 = counter2 + 1
+            } else {
+                console.log("counter is 1")
+                toastr.error('Summary can be exchanged only once');
+            }
         }
 
         function replacebutton3() {
-            document.getElementById("newNER3").style.display = "block";
-            document.getElementById("oldNER3").style.display = "none";
+            if (counter3 == 0) {
+                document.getElementById("newNER3").style.display = "block";
+                document.getElementById("oldNER3").style.display = "none";
 
-            $.ajax({
-                url: "{{url_for('replace3')}}",
-                type: "get",
+                $.ajax({
+                    url: "{{url_for('replace3')}}",
+                    type: "get",
 
-                success: function(response) {
-                    $("#summary3").html(response);
-                    console.log("here...")
-                },
-                error: function(xhr) {
-                    //Do Something to handle error
-                }
-            });
+                    success: function(response) {
+                        $("#summary3").html(response);
+                        console.log("here...")
+                    },
+                    error: function(xhr) {
+                        //Do Something to handle error
+                    }
+                });
+                counter3 = counter3 + 1
+            } else {
+                console.log("counter is 1")
+                toastr.error('Summary can be exchanged only once');
+            }
         }
 
         function replacebutton4() {
-            document.getElementById("newNER4").style.display = "block";
-            document.getElementById("oldNER4").style.display = "none";
+            if (counter4 == 0) {
+                document.getElementById("newNER4").style.display = "block";
+                document.getElementById("oldNER4").style.display = "none";
 
-            $.ajax({
-                url: "{{url_for('replace4')}}",
-                type: "get",
+                $.ajax({
+                    url: "{{url_for('replace4')}}",
+                    type: "get",
 
-                success: function(response) {
-                    $("#summary4").html(response);
-                    console.log("here...")
-                },
-                error: function(xhr) {
-                    //Do Something to handle error
-                }
-            });
+                    success: function(response) {
+                        $("#summary4").html(response);
+                        console.log("here...")
+                    },
+                    error: function(xhr) {
+                        //Do Something to handle error
+                    }
+                });
+                counter4 = counter4 + 1
+            } else {
+                console.log("counter is 1")
+                toastr.error('Summary can be exchanged only once');
+            }
         }
 
         var slider = $('#max_words')
