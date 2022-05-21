@@ -53,6 +53,7 @@
 
     <script>
         function replacebutton1() {
+
             document.getElementById("newNER1").style.display = "block";
             document.getElementById("oldNER1").style.display = "none";
 
@@ -209,7 +210,7 @@
                                 <div class="row">
                                     <span id='clickableAwesomeFont' style="padding-left:10px;padding-top:10px;padding-right: 14px;"><i class="fa fa-regular fa-copy" onclick="copyFunction1()" data-toggle="tooltip" data-placement="top" title="COPY"></i></span>
 
-                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton1()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
+                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton1()" data-toggle="tooltip" data-placement="top" title="EXCHANGE SUMMARY"></i></span>
                                 </div>
 
                             </ul>
@@ -224,8 +225,8 @@
                                     <div class='row'>{{keywords1}}</div>
                                 </div>
                                 <div id='NER1' class='tab-pane fade'>
-                                    <div class='row' id="oldNER1 ">{{display1|markdown}}</div>
-                                    <div class='row' id="newNER1 ">{{new_display1|markdown}}</div>
+                                    <div class='row' id="oldNER1">{{display1|markdown}}</div>
+                                    <div class='row' id="newNER1">{{new_display1|markdown}}</div>
 
                                 </div>
                                 <div id='listen_audio1' class='tab-pane fade'>
@@ -277,8 +278,8 @@
                                 </div>
                                 <div id='NER2' class='tab-pane fade'>
 
-                                    <div class='row' id="oldNER2 ">{{display2|markdown}}</div>
-                                    <div class='row' id="newNER2 ">{{new_display2|markdown}}</div>
+                                    <div class='row' id="oldNER2">{{display2|markdown}}</div>
+                                    <div class='row' id="newNER2">{{new_display2|markdown}}</div>
                                 </div>
 
                                 <div id='listen_audio2' class='tab-pane fade'>
@@ -332,8 +333,8 @@
                                 </div>
                                 <div id='NER3' class='tab-pane fade'>
 
-                                    <div class='row' id="oldNER3 ">{{display3|markdown}}</div>
-                                    <div class='row' id="newNER3 ">{{new_display3|markdown}}</div>
+                                    <div class='row' id="oldNER3">{{display3|markdown}}</div>
+                                    <div class='row' id="newNER3">{{new_display3|markdown}}</div>
                                 </div>
 
 
@@ -377,11 +378,7 @@
                             <div class="tab-content ">
                                 <div id="summary4 " class='tab-pane fade in active'>
 
-<<<<<<< HEAD
-                                    <div class='row' id="summary2">{{result4}}
-=======
                                     <div class='row' id="summary4">{{result4}}
->>>>>>> c81a287f58bf04b3efcf48e4e1eaf23cadcd374e
                                         <div class="url ">{{url3}}</div>
                                     </div>
 
@@ -390,8 +387,8 @@
                                     <div class='row'>{{keywords4}}</div>
                                 </div>
                                 <div id='NER4' class='tab-pane fade'>
-                                    <div class='row' id="oldNER4 ">{{display4|markdown}}</div>
-                                    <div class='row' id="newNER4 ">{{new_display4|markdown}}</div>
+                                    <div class='row' id="oldNER4">{{display4|markdown}}</div>
+                                    <div class='row' id="newNER4">{{new_display4|markdown}}</div>
                                 </div>
 
 
