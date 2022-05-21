@@ -936,6 +936,7 @@ footer {
 }
 
 .tab-pane {
+    font-family: "Lato", sans-serif;
     overflow-y: scroll;
     scrollbar-width: thin;
     background-color: #47295500;
@@ -1011,7 +1012,7 @@ footer {
 }
 
 .nav li a {
-    color: rgba(199, 191, 191, 0.797);
+    color: #532054;
 }
 
 .nav li a:hover {

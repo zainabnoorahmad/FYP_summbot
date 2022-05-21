@@ -19,7 +19,7 @@ import json
 import spacy
 from spacy import displacy
 from flaskext.markdown import Markdown
-from QueryProcessing import *
+#from QueryProcessing import *
 
 
 
@@ -67,7 +67,7 @@ outputs=[]
 display1=display2=display3=display4=display5=""
 Keywords=[]
 new_display1=""
-unprocessed_query=""
+ 
 
 
 
@@ -82,9 +82,9 @@ def Index():
 @app.route("/Url",methods=["GET","POST"])
 def Url():
     if req.method=='POST':
-        unprocessed_query=req.form['data']
-        print(unprocessed_query)
-        query,Keywords = query_processing( unprocessed_query)
+        query=req.form['data']
+        #print(unprocessed_query)
+       # query,Keywords = query_processing( unprocessed_query)
         print(query)
         print(Keywords)
 
@@ -137,11 +137,12 @@ def Url():
     return Extract({ "urls": [
         {"url": url}
         for url in urls
-    ]})
+    ]},query)
 
 ##@app.route("/Extract",methods=["GET","POST"])
-def Extract(urls):
+def Extract(urls,query):
     sites=urls["urls"]
+    query=query
 
     #for site in sites:
      #   print(site)
@@ -195,7 +196,7 @@ def Extract(urls):
     return Parse({ "articles": [
         {"article": article}
         for article in articles
-    ]})
+    ]},query)
     
 
 
@@ -223,9 +224,10 @@ def named_entity_relationship(result1):
     return result1,display1
 
 
-def Parse(articles):
+def Parse(articles,query):
      
     texts=articles["articles"]
+    query=query
     
     
     #used_urls.append(sites[0])
@@ -283,8 +285,8 @@ def Parse(articles):
          
          
         #print(sites[3]['url'])
-        print(unprocessed_query)
-        return render_template("result.html",unprocessed_query=unprocessed_query,result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,new_display1=new_display1,new_display2=new_display2,new_display3=new_display3,new_display4=new_display4,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
+        print(query)
+        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,new_display1=new_display1,new_display2=new_display2,new_display3=new_display3,new_display4=new_display4,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4],query=query)
 
         #return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
 #NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
