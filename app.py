@@ -66,6 +66,8 @@ used_urls=[]
 outputs=[]
 display1=display2=display3=display4=display5=""
 Keywords=[]
+new_display1=""
+unprocessed_query=""
 
 
 
@@ -81,6 +83,7 @@ def Index():
 def Url():
     if req.method=='POST':
         unprocessed_query=req.form['data']
+        print(unprocessed_query)
         query,Keywords = query_processing( unprocessed_query)
         print(query)
         print(Keywords)
@@ -119,7 +122,7 @@ def Url():
                         'https://economictimes.indiatimes.',
                         'https://www.binance.',
                         'https://www.theverge.',
-                        'https://www.merriam-webster')
+                        'https://www.merriam-webster.')
 
         for url in urls[:]:
                 if url.startswith(google_domains):
@@ -173,7 +176,7 @@ def Extract(urls):
 
         article_text = ''
         bs = BeautifulSoup(downloaded, features="lxml")
-        article = bs.findAll('p')
+        article = bs.findAll(['p','span'])
 
  
 
@@ -200,7 +203,7 @@ def Extract(urls):
 
 ##-----------------------------------------------
  #   return urls["urls"][0]["url"]
-HTML_WRAPPER = """<div style=" padding: 3px,overflow-y: scroll;">{}</div>"""
+HTML_WRAPPER = """<div style=" padding: 3px,overflow-y: scroll; width:79%">{}</div>"""
 def named_entity_relationship(result1):
     NER = spacy.load("en_core_web_sm")
     NER1=[]
@@ -239,7 +242,8 @@ def Parse(articles):
     #print(sites[4])
 
 
-
+    print("-------------------------------------")
+    print(len(texts))
     if(texts):
         for j in range(len(texts)):
             data=texts[j]["article"]
@@ -251,7 +255,10 @@ def Parse(articles):
         NER2, display2=named_entity_relationship(outputs[1])
         NER3, display3=named_entity_relationship(outputs[2])
         NER4, display4=named_entity_relationship(outputs[3])
-        NER5, display5=named_entity_relationship(outputs[4])
+        NER5, new_display1=named_entity_relationship(outputs[4])
+        NER6, new_display2=named_entity_relationship(outputs[5])
+        NER7, new_display3=named_entity_relationship(outputs[6])
+        NER8, new_display4=named_entity_relationship(outputs[7])
 
 
 
@@ -276,8 +283,8 @@ def Parse(articles):
          
          
         #print(sites[3]['url'])
-
-        return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
+        print(unprocessed_query)
+        return render_template("result.html",unprocessed_query=unprocessed_query,result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,new_display1=new_display1,new_display2=new_display2,new_display3=new_display3,new_display4=new_display4,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
 
         #return render_template("result.html",result1=outputs[0],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4])
 #NER2=NER2,NER3=NER3,NER4=NER4,NER5=NER5
@@ -303,8 +310,9 @@ def Summarize(data):
     print(num_words)
     
     def query(payload):
-        response = requests.post(API_URL, headers=headers, json=payload)
+        response = requests.post(API_URL, headers=headers, json=payload,verify=False)
         return response.json()
+
 
     output = query({
                 "inputs":data,
@@ -405,38 +413,30 @@ def uploadUrl():
 @app.route('/replace1', methods = ['GET', 'POST'])
 def replace1():
     print("1")
-    #print("----used urls print in replace")
-   # print(used_urls[0])
-    #print(used_urls[1])
-    #print(used_urls[2])
-    #print(used_urls[3])
-     
-    #print("#######")
-    #print(urls[4])
     new_text=getText(urls[4])
-    new_summary=Summarize(new_text)
-    #return render_template("result.html",result1=outputs[1],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4],new_summary=new_summary)
-    #return render_template("result.html",result1=new_summary)
-    return new_summary
+    new_summary1=Summarize(new_text)
+    return new_summary1
     
 @app.route('/replace2', methods = ['GET', 'POST'])
 def replace2():
     print("2")
-    #print("----used urls print in replace")
-   # print(used_urls[0])
-    #print(used_urls[1])
-    #print(used_urls[2])
-    #print(used_urls[3])
-     
-    #print("#######")
-    #print(urls[4])
     new_text=getText(urls[5])
     new_summary2=Summarize(new_text)
-    #return render_template("result.html",result1=outputs[1],result2=outputs[1],result3=outputs[2],result4=outputs[3],result5= outputs[4],display1=display1,display2=display2,display3=display3,display4=display4,display5=display5,site0=sites[0]['url'],site1=sites[1]['url'],site2=sites[2]['url'],site3=sites[3]['url'],keywords1=keywords1,keywords2=keywords2,keywords3=keywords3,keywords4=keywords4,keywords5=keywords5,url1=website_source[0],url2=website_source[1],url3=website_source[2],url4=website_source[3],url5=website_source[4],new_summary=new_summary)
-    #return render_template("result.html",result1=new_summary)
     return new_summary2
-    
 
+@app.route('/replace3', methods = ['GET', 'POST'])
+def replace3():
+    print("3")
+    new_text=getText(urls[6])
+    new_summary3=Summarize(new_text)
+    return new_summary3   
+
+@app.route('/replace4', methods = ['GET', 'POST'])
+def replace4():
+    print("4")
+    new_text=getText(urls[7])
+    new_summary4=Summarize(new_text)
+    return new_summary4
 
 if __name__=='__main__':
     app.debug=True

@@ -47,12 +47,19 @@
     <script src="https://kit.fontawesome.com/558cef9f71.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100&display=swap" rel="stylesheet">
 
     <script>
         function replacebutton1() {
+            document.getElementById("newNER1").style.display = "block";
+            document.getElementById("oldNER1").style.display = "none";
+
             $.ajax({
                 url: "{{url_for('replace1')}}",
                 type: "get",
+
                 success: function(response) {
                     $("#summary1").html(response);
                     console.log("here...")
@@ -64,12 +71,52 @@
         }
 
         function replacebutton2() {
+            document.getElementById("newNER2").style.display = "block";
+            document.getElementById("oldNER2").style.display = "none";
+
             $.ajax({
                 url: "{{url_for('replace2')}}",
                 type: "get",
+
                 success: function(response) {
                     $("#summary2").html(response);
-                    console.log("here2...")
+                    console.log("here...")
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+            });
+        }
+
+        function replacebutton3() {
+            document.getElementById("newNER3").style.display = "block";
+            document.getElementById("oldNER3").style.display = "none";
+
+            $.ajax({
+                url: "{{url_for('replace3')}}",
+                type: "get",
+
+                success: function(response) {
+                    $("#summary3").html(response);
+                    console.log("here...")
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+            });
+        }
+
+        function replacebutton4() {
+            document.getElementById("newNER4").style.display = "block";
+            document.getElementById("oldNER4").style.display = "none";
+
+            $.ajax({
+                url: "{{url_for('replace4')}}",
+                type: "get",
+
+                success: function(response) {
+                    $("#summary4").html(response);
+                    console.log("here...")
                 },
                 error: function(xhr) {
                     //Do Something to handle error
@@ -124,35 +171,7 @@
 
 <body data-spy="scroll" data-target="#navbar-nav-header" class=" ">
     <div class="sidebar">
-        <div class="logo-details">
-            <i class='bx bxl-c-plus-plus icon'></i>
-            <div class="logo_name">CodingLab</div>
-            <i class='bx bx-menu' id="btn"></i>
-        </div>
 
-
-
-        <ul class='nav-list'>
-
-            <li class='active' onclick="showDivSummaries()">
-                <a data-toggle='tab'><i class='bx bx-search'></i>
-                            </a>
-                <span class="tooltip">Search</span>
-            </li>
-            <li onclick="showDivSummaries2()">
-                <a data-toggle='tab'><i class='bx bx-search'></i>
-                            </a>
-                <span class="tooltip">Search</span>
-
-
-            </li>
-
-        </ul>
-
-
-
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
     </div>
 
 
@@ -164,95 +183,112 @@
 
 
     <section class="home-section2">
-        <div class="home-section2-text">Dashboard2</div>
+        <h1 class="display-2 mb-4 summbot "><a href="index.html">SummBot</a> </h1>
+        <div class="vertical"></div>
+        <div class="tool">Text Summarization Tool</div>
+        <div class="topic">{{unprocessed_query}}</div>
+
+
+        <hr class="hr">
         <div class="result">
             <div class="row">
                 <!--SUMMARY-1-->
                 <div class="summ1 col-sm-5">
 
-                    <button id="replace_button" onclick="replacebutton1()">Replace</button> {{new_summary1}}}
 
                     <div class="card">
                         <div class="card-body">
 
                             <ul class='nav nav-pills'>
                                 <li class='active'><a data-toggle='tab' href='#summary1'>Summary-1</a></li>
-                                <li><a data-toggle='tab' href='#keyword1'>Keywords</a></li>
+
                                 <li><a data-toggle='tab' href='#NER1'>Named-entity relation</a></li>
                                 <li><a data-toggle='tab' href='#listen_audio1'>Listen Audio</a></li>
-                                <span id='clickableAwesomeFont'><i class="fa fa-regular fa-copy" onclick="copyFunction1()"></i></span>
+
+                                <div class="row">
+                                    <span id='clickableAwesomeFont' style="padding-left:10px;padding-top:10px;padding-right: 14px;"><i class="fa fa-regular fa-copy" onclick="copyFunction1()" data-toggle="tooltip" data-placement="top" title="COPY"></i></span>
+
+                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton1()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
+                                </div>
+
                             </ul>
-                            <div class="tab-content">
-                                <div class='tab-pane fade in active'>
-                                    <div class='row' id="summary1">{{result1}}
-                                        <div class="url">{{url0}}</div>
+                            <div class="tab-content ">
+                                <div id="summary1 " class='tab-pane fade in active'>
+
+                                    <div class='row'>{{result1}}
+                                        <div class="url ">{{url0}}</div>
                                     </div>
                                 </div>
                                 <div id='keyword1' class='tab-pane fade'>
                                     <div class='row'>{{keywords1}}</div>
                                 </div>
                                 <div id='NER1' class='tab-pane fade'>
-                                    <div class='row'>{{display1|markdown}}</div>
+                                    <div class='row' id="oldNER1 ">{{display1|markdown}}</div>
+                                    <div class='row' id="newNER1 ">{{new_display1|markdown}}</div>
+
                                 </div>
                                 <div id='listen_audio1' class='tab-pane fade'>
 
                                     <div class='row'>Listen
                                         <button id='listen-summary1' class='media_button'>
                                         <i class='far fa-play-circle' style='font-size:18px'></i></button> Pause
-                                        <button id='pause-summary1' type="button" class='media_button'>
+                                        <button id='pause-summary1' type="button " class='media_button'>
                                         <i class='far fa-pause-circle' ></i></button> Resume
-                                        <button id='resume-summary1' type="button" style="transform:rotate(90deg);" class='media_button'>
-                                        <i class="bi bi-eject" ></i></button></a>
+                                        <button id='resume-summary1' type="button " style="transform:rotate(90deg); " class='media_button'>
+                                        <i class="bi bi-eject " ></i></button></a>
                                     </div>
                                     {{result1}}
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!--SUMMARY-2-->
-                <div class="summ2 col-sm-5">
-                    <button id="replace_button" onclick="replacebutton2()">Replace</button> {{new_summary2}}}
+                <div class="summ2 col-sm-5 ">
 
-                    <div class="card">
+
+                    <div class="card ">
                         <div class="card-body ">
 
                             <ul class='nav nav-pills'>
                                 <li class='active'><a data-toggle='tab' href='#summary2'>Summary-2</a></li>
-                                <li><a data-toggle='tab' href='#keyword2'>Keywords</a></li>
+
                                 <li><a data-toggle='tab' href='#NER2'>Named-entity relation</a></li>
                                 <li><a data-toggle='tab' href='#listen_audio2'>Listen Audio</a></li>
 
-                                <span id='clickableAwesomeFont'><i class="fa fa-regular fa-copy" onclick="copyFunction2()"></i></span>
+                                <div class="row">
+                                    <span id='clickableAwesomeFont' style="padding-left:10px;padding-top:10px;padding-right: 14px;"><i class="fa fa-regular fa-copy" onclick="copyFunction2()" data-toggle="tooltip" data-placement="top" title="COPY"></i></span>
 
+                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton2()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
+                                </div>
                             </ul>
-                            <div class="tab-content">
-                                <div class='tab-pane fade in active'>
-                                    <div class='row' id="summary2">{{result2}}
+                            <div class="tab-content ">
+                                <div id="summary2 " class='tab-pane fade in active'>
+
+                                    <div class='row'>{{result2}}
                                         <div class="url ">{{url1}}</div>
                                     </div>
-
-
 
                                 </div>
                                 <div id='keyword2' class='tab-pane fade'>
                                     <div class='row'>{{keywords2}}</div>
                                 </div>
                                 <div id='NER2' class='tab-pane fade'>
-                                    <div class='row'>{{display2|markdown}}</div>
+
+                                    <div class='row' id="oldNER2 ">{{display2|markdown}}</div>
+                                    <div class='row' id="newNER2 ">{{new_display2|markdown}}</div>
                                 </div>
-                                <div id='NER2' class='tab-pane fade'>
-                                    <div class='row'>{{display2|markdown}}</div>
-                                </div>
+
                                 <div id='listen_audio2' class='tab-pane fade'>
 
                                     <div class='row'>Listen
                                         <button id='listen-summary2' class='media_button'>
                                         <i class='far fa-play-circle' style='font-size:18px'></i></button> Pause
-                                        <button id='pause-summary2' type="button" class='media_button'>
+                                        <button id='pause-summary2' type="button " class='media_button'>
                                         <i class='far fa-pause-circle' ></i></button> Resume
-                                        <button id='resume-summary2' type="button" style="transform:rotate(90deg);" class='media_button'>
-                                        <i class="bi bi-eject" ></i></button></a>
+                                        <button id='resume-summary2' type="button " style="transform:rotate(90deg); " class='media_button'>
+                                        <i class="bi bi-eject " ></i></button></a>
                                     </div>
                                     {{result2}}
                                 </div>
@@ -261,35 +297,42 @@
                     </div>
                 </div>
             </div>
+
             <div class="row ">
                 <!--SUMMARY-3-->
-                <div class="summ3 col-sm-5">
+                <div class="summ3 col-sm-5 ">
+
+
                     <div class="card ">
                         <div class="card-body ">
 
                             <ul class='nav nav-pills'>
                                 <li class='active'><a data-toggle='tab' href='#summary3'>Summary-3</a></li>
-                                <li><a data-toggle='tab' href='#keyword3'>Keywords</a></li>
+
                                 <li><a data-toggle='tab' href='#NER3'>Named-entity relation</a></li>
                                 <li><a data-toggle='tab' href='#listen_audio3'>Listen Audio</a></li>
 
-                                <span id='clickableAwesomeFont'><i class="fa fa-regular fa-copy" onclick="copyFunction3()"></i></span>
+                                <div class="row">
+                                    <span id='clickableAwesomeFont' style="padding-left:10px;padding-top:10px;padding-right: 14px;"><i class="fa fa-regular fa-copy" onclick="copyFunction3()" data-toggle="tooltip" data-placement="top" title="COPY"></i></span>
 
+                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton3()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
+                                </div>
                             </ul>
-                            <div class="tab-content">
-                                <div class='tab-pane fade in active'>
-                                    <div class='row' id='summary3'>{{result3}}
+                            <div class="tab-content ">
+                                <div id="summary3 " class='tab-pane fade in active'>
+
+                                    <div class='row'>{{result3}}
                                         <div class="url ">{{url2}}</div>
                                     </div>
-
-
 
                                 </div>
                                 <div id='keyword3' class='tab-pane fade'>
                                     <div class='row'>{{keywords3}}</div>
                                 </div>
                                 <div id='NER3' class='tab-pane fade'>
-                                    <div class='row'>{{display3|markdown}}</div>
+
+                                    <div class='row' id="oldNER3 ">{{display3|markdown}}</div>
+                                    <div class='row' id="newNER3 ">{{new_display3|markdown}}</div>
                                 </div>
 
 
@@ -298,46 +341,52 @@
                                     <div class='row'>Listen
                                         <button id='listen-summary3' class='media_button'>
         <i class='far fa-play-circle' style='font-size:18px'></i></button> Pause
-                                        <button id='pause-summary3' type="button" class='media_button'>
+                                        <button id='pause-summary3' type="button " class='media_button'>
         <i class='far fa-pause-circle' ></i></button> Resume
-                                        <button id='resume-summary3' type="button" style="transform:rotate(90deg);" class='media_button'>
-        <i class="bi bi-eject" ></i></button></a>
+                                        <button id='resume-summary3' type="button " style="transform:rotate(90deg); " class='media_button'>
+        <i class="bi bi-eject " ></i></button></a>
                                     </div>
                                     {{result3}}
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <!--SUMMARY-4-->
 
-                <div class="summ4 col-sm-5" id="">
-                    <div class="card">
-                        <div class="card-body">
+                <div class="summ4 col-sm-5 " id=" ">
+
+
+                    <div class="card ">
+                        <div class="card-body ">
 
                             <ul class='nav nav-pills'>
                                 <li class='active'><a data-toggle='tab' href='#summary4'>Summary-4</a></li>
-                                <li><a data-toggle='tab' href='#keyword4'>Keywords</a></li>
+
                                 <li><a data-toggle='tab' href='#NER4'>Named-entity relation</a></li>
                                 <li><a data-toggle='tab' href='#listen_audio4'>Listen Audio</a></li>
+                                <div class="row">
+                                    <span id='clickableAwesomeFont' style="padding-left:10px;padding-top:10px;padding-right: 14px;"><i class="fa fa-regular fa-copy" onclick="copyFunction4()" data-toggle="tooltip" data-placement="top" title="COPY"></i></span>
 
-                                <span id='clickableAwesomeFont'><i style="left:5px;font-size: 18px;" class="fa fa-regular fa-copy" onclick="copyFunction4()"></i></span>
+                                    <span id='clickableAwesomeFont' style="padding-top:10px;"><i class="fa fa-exchange" onclick="replacebutton4()" data-toggle="tooltip" data-placement="top" title="   EXCHANGE SUMMARY"></i></span>
+                                </div>
 
                             </ul>
-                            <div class="tab-content">
-                                <div class='tab-pane fade in active'>
-                                    <div class='row' id='summary4'>{{result4}}
+                            <div class="tab-content ">
+                                <div id="summary4 " class='tab-pane fade in active'>
+
+                                    <div class='row'>{{result4}}
                                         <div class="url ">{{url3}}</div>
                                     </div>
-
-
 
                                 </div>
                                 <div id='keyword4' class='tab-pane fade'>
                                     <div class='row'>{{keywords4}}</div>
                                 </div>
                                 <div id='NER4' class='tab-pane fade'>
-                                    <div class='row'>{{display4|markdown}}</div>
+                                    <div class='row' id="oldNER4 ">{{display4|markdown}}</div>
+                                    <div class='row' id="newNER4 ">{{new_display4|markdown}}</div>
                                 </div>
 
 
@@ -346,16 +395,17 @@
                                     <div class='row'>Listen
                                         <button id='listen-summary4' class='media_button'>
         <i class='far fa-play-circle' style='font-size:18px'></i></button> Pause
-                                        <button id='pause-summary4' type="button" class='media_button'>
+                                        <button id='pause-summary4' type="button " class='media_button'>
         <i class='far fa-pause-circle' ></i></button> Resume
-                                        <button id='resume-summary4' type="button" style="transform:rotate(90deg);" class='media_button'>
-        <i class="bi bi-eject" ></i></button></a>
+                                        <button id='resume-summary4' type="button " style="transform:rotate(90deg); " class='media_button'>
+        <i class="bi bi-eject " ></i></button></a>
                                     </div>
                                     {{result4}}
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -380,5 +430,7 @@
 
 
 </body>
+
+</html>
 
 </html>

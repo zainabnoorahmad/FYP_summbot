@@ -47,6 +47,7 @@
         var slider = $('#max_words')
         slider.on('change mousemove', function(evt) {
             $('#label_max_words').text('# words in summary: ' + slider.val())
+            console.log("maxords")
         })
         var slider2 = $('#max_summaries')
         slider2.on('change mousemove', function(evt) {
@@ -87,44 +88,14 @@
                 };
             }
         }
-
-
-        /*file upload ajax
-
-        $(document).ready(function() {
-            $("file_button").click(function() {
-                $(".input-group").load("http://localhost:5000/getFile", function(responseTxt, statusTxt, jqXHR) {
-                    if (statusTxt == "success") {
-                        alert("New content loaded successfully!");
-                    }
-                    if (statusTxt == "error") {
-                        alert("Error: " + jqXHR.status + " " + jqXHR.statusText);
-                    }
-                });
-            });
-        });
-        
-        var form = document.forms.namedItem("fileinfo");
-        form.addEventListener('submit', function(ev) {
-            var oData = new FormData(form);
-            var oReq = new XMLHttpRequest();
-            oReq.open("POST", "{{url_for('getFile')}}", true);
-            oReq.onload = function(oEvent) {
-                if (oReq.status == 200) {
-                    document.getElementById('result_text').setAttribute(p, JSON.parse(oReq.responseText));
-                } else {
-                    alert("Error " + oReq.status + " occurred when trying to upload your file")
-                }
-            };
-            oReq.send(oData);
-            ev.preventDefault();
-        }, false);*/
     </script>
 
 
 </head>
 
-<body data-spy=" " data-target=" " class=" ">
+<body>
+    <div id="loader"></div>
+
     <div class="main">
         <div class="  text-center ">
             <h1 class="display-2 mb-4 summbot ">SummBot </h1>
@@ -161,15 +132,15 @@
                     </div>
                 </div>
 
-
+            </form>
 
         </div>
-        </form>
+
 
 
 
     </div>
-    </div>
+
     <div class="text_style">
 
         <p>--You can also get summary by--</p>
@@ -181,83 +152,104 @@
 
         <!--FILE UPLOAD SUMMARY-->
         <div class="boxed-page overlay bg-fixed">
-            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc1">
 
-                <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 ">
-                    <i class="lnr lnr-file-add"></i>
- 
-                <div class="hover_bkgr_fricc">
-                  <span class="helper"></span>
-                <div class="popup_content">
-                    <div class="popupCloseButton">&times;</div>
-                    <div class="row">
-                        <div class="col-29">
-                            <label for="formFile" class="form-label" style="font-size: 27px;left:233px;">Upload a text file</label>
+                <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
+                <i class="lnr lnr-file-add"></i>
 
-                            <form action="{{url_for('getFile')}}" id="form_file" name="fileinfo" method="POST" enctype="multipart/form-data">
-                                <input class="form-control" type="file" name="textFile" id="formFile" />
-                                <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                <div class="hover_bkgr_fricc1">
+                    <span class="helper"></span>
+                    <div class="popup_content1">
+                        <div class="popupCloseButton1">&times;</div>
+                        <div class="row">
+                            <div class="col-29">
+                                <label for="formFile" class="form-label" style="font-size: 27px;left:233px;">Upload a text file</label>
 
-                            </form>
+                                <form action="{{url_for('getFile')}}" id="form_file" name="fileinfo" method="POST" enctype="multipart/form-data">
+                                    <input class="form-control" type="file" name="textFile" id="formFile" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+
+                                </form>
+
+                            </div>
 
                         </div>
-
                     </div>
+
                 </div>
+
+
+
+                <h4>Upload File</h4>
             </div>
 
-            </span>
-
-            <h4>Upload File</h4>
         </div>
 
-    </div>
+        <!--URL UPLOAD SUMMARY-->
+        <div class="boxed-page overlay bg-fixed">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc2">
 
-    <!--URL UPLOAD SUMMARY-->
-    <div class="boxed-page overlay bg-fixed">
-        <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc2">
-
-            <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 ">
+                <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
                 <span class="lnr lnr-link"></span>
-            <div class="hover_bkgr_fricc2">
-                <span class="helper"></span>
-                <div class="popup_content">
-                    <div class="popupCloseButton2">&times;</div>
-                    <div class="row">
-                        <div class="col-29">
-                            <label for="formurl" class="form-label" style="font-size: 27px;left:233px;">Give the URL of article</label>
+                <div class="hover_bkgr_fricc2">
+                    <span class="helper"></span>
+                    <div class="popup_content">
+                        <div class="popupCloseButton2">&times;</div>
+                        <div class="row">
+                            <div class="col-29">
+                                <label for="formurl" class="form-label" style="font-size: 27px;left:233px;">Give the URL of article</label>
 
-                            <form action="{{url_for('uploadUrl')}}" id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
-                                <input class="form-control" type="input" name="url" id="formFile" />
-                                <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                <form action="{{url_for('uploadUrl')}}" id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
+                                    <input class="form-control" type="input" name="url" id="formFile" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
 
-                            </form>
+                                </form>
+
+                            </div>
 
                         </div>
-
                     </div>
                 </div>
+
+
+
+                <h4>Upload File</h4>
             </div>
 
-            </span>
+        </div>
+        <div class="boxed-page overlay bg-fixed">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc3">
 
-            <h4>Upload File</h4>
+                <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
+                <span class="lnr lnr-text-size"></span>
+                <div class="hover_bkgr_fricc3">
+                    <span class="helper"></span>
+                    <div class="popup_content3">
+                        <div class="popupCloseButton3">&times;</div>
+                        <div class="row">
+                            <div class="col-29">
+                                <label for="formurl" class="form-label" style="font-size: 27px;left:233px;">Enter the text.</label>
+
+                                <form action="{{url_for('uploadUrl')}}" id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
+                                    <input class="form-control" type="input" name="url" id="formFile" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <h4>Upload File</h4>
+            </div>
+
         </div>
 
-    </div>
-    <div class="boxed-page overlay bg-fixed">
-        <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc">
 
-            <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 ">
-                     
-                        <span class="lnr lnr-text-size"></span>
-
-            </span>
-
-            <h4>Give Text</h4>
-        </div>
-
-    </div>
     </div>
 
     <!-- Counter Section -->
@@ -268,12 +260,7 @@
 
 
 
-    </div>
 
-
-</body>
-
-</html>iv>
 
 
 </body>

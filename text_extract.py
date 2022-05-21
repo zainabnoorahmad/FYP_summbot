@@ -24,7 +24,7 @@ import requests
 #res = requests.get(url)
 #html_page = res.content
 
-downloaded = trafilatura.fetch_url('https://www.merriam-webster.com/dictionary/summarization')
+downloaded = trafilatura.fetch_url('https://www.exploredatabase.com/2014/09/query-processing-in-database.html')
 
 #article has the content extracted using traf
 article=trafilatura.extract(downloaded)

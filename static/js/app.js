@@ -163,26 +163,50 @@ function showDivSummaries2() {
 
 /*-----------------------------------------popupwindow----------------------------- */
 $(window).load(function() {
-    $(".trigger_popup_fricc").click(function() {
-        $('.hover_bkgr_fricc').show();
+    $(".trigger_popup_fricc1").click(function() {
+        $('.hover_bkgr_fricc1').show();
+        $('.hover_bkgr_fricc2').hide();
+        $('.hover_bkgr_fricc3').hide();
     });
-    $('.hover_bkgr_fricc').click(function() {
-        $('.hover_bkgr_fricc').hide();
+
+    $('.hover_bkgr_fricc1').click(function() {
+        $('.hover_bkgr_fricc1').hide();
     });
-    $('.popupCloseButton').click(function() {
-        $('.hover_bkgr_fricc').hide();
+
+    $('.popupCloseButton1').click(function() {
+        $('.popup_content1').hide();
         console.log("banddd");
     });
 
     $(".trigger_popup_fricc2").click(function() {
         $('.hover_bkgr_fricc2').show();
-        $('.hover_bkgr_fricc').hide();
+        $('.hover_bkgr_fricc1').hide();
+        $('.hover_bkgr_fricc3').hide();
+
+
+
     });
     $('.hover_bkgr_fricc2').click(function() {
         $('.hover_bkgr_fricc2').hide();
     });
     $('.popupCloseButton2').click(function() {
+        $('.popup_content2').hide();
+        console.log("banddd");
+    });
+
+    $(".trigger_popup_fricc3").click(function() {
+        $('.hover_bkgr_fricc3').show();
         $('.hover_bkgr_fricc2').hide();
+        $('.hover_bkgr_fricc1').hide();
+
+
+    });
+    $('.hover_bkgr_fricc3').click(function() {
+        $('.hover_bkgr_fricc3').hide();
+    });
+    $('.popupCloseButton3').click(function() {
+        $('.popup_content3').hide();
+        console.log("banddd");
     });
 });
 
@@ -249,3 +273,32 @@ $('#pause-summary5').click(function() {
 $('#resume-summary5').click(function() {
     responsiveVoice.resume();
 })
+
+
+
+
+
+
+/////////////////////////////////////////loader
+var loader;
+
+function loadNow(opacity) {
+    if (opacity <= 0) {
+        displayContent();
+    } else {
+        loader.style.opacity = opacity;
+        window.setTimeout(function() {
+            loadNow(opacity - 0.05);
+        }, 50);
+    }
+}
+
+function displayContent() {
+    loader.style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    loader = document.getElementById('loader');
+    loadNow(1);
+});
