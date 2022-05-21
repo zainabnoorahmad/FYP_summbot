@@ -44,6 +44,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100&display=swap" rel="stylesheet">
     <script>
+        function showLoader() {
+            console.log("indise show loader")
+            loader = document.getElementById('loader');
+
+            loader.style.display = 'block';
+
+        }
         var slider = $('#max_words')
         slider.on('change mousemove', function(evt) {
             $('#label_max_words').text('# words in summary: ' + slider.val())
@@ -94,7 +101,11 @@
 </head>
 
 <body>
-    <div id="loader"></div>
+
+    <div id="loader">
+        <video autoplay muted src="../static/loader3.mp4"></video>
+        <div id="loader2"></div>
+    </div>
 
     <div class="main">
         <div class="  text-center ">
@@ -113,7 +124,7 @@
 
                             <input type="input" class="form-control form-input  " placeholder="Enter your query..." name="data" id='name' required>
 
-                            <button type="submit" name="Submit">Search</button>
+                            <button type="submit" name="Submit" onclick="showLoader()">Search</button>
                         </div>
                     </div>
 
@@ -123,12 +134,12 @@
                 <div class="parameters">
                     <div class="col-md-3 parameter1">
                         <label for="max_words" id="label_max_words"># words in summary: 50</label>
-                        <input name="max_words" type="range" class="custom-range" min="50" max="200" value="50" step="10" id="max_words">
+                        <input name="max_words" type="range" class="custom-range" min="50" max="200" value="50 " step="10 " id="max_words ">
                     </div>
 
                     <div class="col-md-3 parameter2">
                         <label for="max_summaries" id="Number_of_summaries"># of summaries: 4</label>
-                        <input name="max_summaries" type="range" class="custom-range" min="1" max="4" value="4" step="1" id="max_summaries">
+                        <input name="max_summaries" type="range" class="custom-range" min="1 " max="4 " value="4 " step="1 " id="max_summaries ">
                     </div>
                 </div>
 
@@ -141,33 +152,33 @@
 
     </div>
 
-    <div class="text_style">
+    <div class="text_style ">
 
         <p>--You can also get summary by--</p>
 
     </div>
 
-    <div class="summ_container">
+    <div class="summ_container ">
 
 
         <!--FILE UPLOAD SUMMARY-->
-        <div class="boxed-page overlay bg-fixed">
-            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc1">
+        <div class="boxed-page overlay bg-fixed ">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc1 ">
 
-                <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
-                <i class="lnr lnr-file-add"></i>
+                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
+                <i class="lnr lnr-file-add "></i>
 
-                <div class="hover_bkgr_fricc1">
-                    <span class="helper"></span>
-                    <div class="popup_content1">
-                        <div class="popupCloseButton1">&times;</div>
-                        <div class="row">
-                            <div class="col-29">
-                                <label for="formFile" class="form-label" style="font-size: 27px;left:233px;">Upload a text file</label>
+                <div class="hover_bkgr_fricc1 ">
+                    <span class="helper "></span>
+                    <div class="popup_content1 ">
+                        <div class="popupCloseButton1 ">&times;</div>
+                        <div class="row ">
+                            <div class="col-29 ">
+                                <label for="formFile " class="form-label " style="font-size: 27px;left:233px; ">Upload a text file</label>
 
-                                <form action="{{url_for('getFile')}}" id="form_file" name="fileinfo" method="POST" enctype="multipart/form-data">
-                                    <input class="form-control" type="file" name="textFile" id="formFile" />
-                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                <form action="{{url_for( 'getFile')}} " id="form_file " name="fileinfo " method="POST " enctype="multipart/form-data ">
+                                    <input class="form-control " type="file " name="textFile " id="formFile " />
+                                    <input class="btn btn-primary " type="submit " value="Submit " name="submit " />
 
                                 </form>
 
@@ -186,22 +197,22 @@
         </div>
 
         <!--URL UPLOAD SUMMARY-->
-        <div class="boxed-page overlay bg-fixed">
-            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc2">
+        <div class="boxed-page overlay bg-fixed ">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc2 ">
 
-                <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
-                <span class="lnr lnr-link"></span>
-                <div class="hover_bkgr_fricc2">
-                    <span class="helper"></span>
-                    <div class="popup_content">
-                        <div class="popupCloseButton2">&times;</div>
-                        <div class="row">
-                            <div class="col-29">
-                                <label for="formurl" class="form-label" style="font-size: 27px;left:233px;">Give the URL of article</label>
+                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
+                <span class="lnr lnr-link "></span>
+                <div class="hover_bkgr_fricc2 ">
+                    <span class="helper "></span>
+                    <div class="popup_content ">
+                        <div class="popupCloseButton2 ">&times;</div>
+                        <div class="row ">
+                            <div class="col-29 ">
+                                <label for="formurl " class="form-label " style="font-size: 27px;left:233px; ">Give the URL of article</label>
 
-                                <form action="{{url_for('uploadUrl')}}" id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
-                                    <input class="form-control" type="input" name="url" id="formFile" />
-                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                <form action="{{url_for( 'uploadUrl')}} " id="form_url " name="urlinfo " method="POST " enctype="multipart/form-data ">
+                                    <input class="form-control " type="input " name="url " id="formFile " />
+                                    <input class="btn btn-primary " type="submit " value="Submit " name="submit " />
 
                                 </form>
 
@@ -217,22 +228,22 @@
             </div>
 
         </div>
-        <div class="boxed-page overlay bg-fixed">
-            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc3">
+        <div class="boxed-page overlay bg-fixed ">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc3 ">
 
-                <span class="number" data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
-                <span class="lnr lnr-text-size"></span>
-                <div class="hover_bkgr_fricc3">
-                    <span class="helper"></span>
-                    <div class="popup_content3">
-                        <div class="popupCloseButton3">&times;</div>
-                        <div class="row">
-                            <div class="col-29">
-                                <label for="formurl" class="form-label" style="font-size: 27px;left:233px;">Enter the text.</label>
+                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
+                <span class="lnr lnr-text-size "></span>
+                <div class="hover_bkgr_fricc3 ">
+                    <span class="helper "></span>
+                    <div class="popup_content3 ">
+                        <div class="popupCloseButton3 ">&times;</div>
+                        <div class="row ">
+                            <div class="col-29 ">
+                                <label for="formurl " class="form-label " style="font-size: 27px;left:233px; ">Enter the text.</label>
 
-                                <form action="{{url_for('uploadUrl')}}" id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
-                                    <input class="form-control" type="input" name="url" id="formFile" />
-                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                <form action="{{url_for( 'uploadUrl')}} " id="form_url " name="urlinfo " method="POST " enctype="multipart/form-data ">
+                                    <input class="form-control " type="input " name="url " id="formFile " />
+                                    <input class="btn btn-primary " type="submit " value="Submit " name="submit " />
 
                                 </form>
 

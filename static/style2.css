@@ -917,6 +917,15 @@ footer {
     opacity: 0.2;
 }
 
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    overflow: visible;
+    background: rgb(20, 19, 19) url('../static/google-search.gif') no-repeat center center;
+}
+
 .topic {
     color: white;
     position: absolute;
