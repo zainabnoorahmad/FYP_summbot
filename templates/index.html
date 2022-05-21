@@ -163,22 +163,22 @@
 
         <!--FILE UPLOAD SUMMARY-->
         <div class="boxed-page overlay bg-fixed ">
-            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc1 ">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc1">
 
-                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
-                <i class="lnr lnr-file-add "></i>
+                <span class="number" data-from="0" data-to="34" data-refresh-interval="100"></span>
+                <i class="lnr lnr-file-add"></i>
 
-                <div class="hover_bkgr_fricc1 ">
-                    <span class="helper "></span>
-                    <div class="popup_content1 ">
-                        <div class="popupCloseButton1 ">&times;</div>
-                        <div class="row ">
-                            <div class="col-29 ">
-                                <label for="formFile " class="form-label " style="font-size: 27px;left:233px; ">Upload a text file</label>
+                <div class="hover_bkgr_fricc1">
+                    <span class="helper"></span>
+                    <div class="popup_content1">
+                        <div class="popupCloseButton1">&times;</div>
+                        <div class="row">
+                            <div class="col-29">
+                                <label for="formFile" id="form-label">Upload a text file</label>
 
-                                <form action="{{url_for( 'getFile')}} " id="form_file " name="fileinfo " method="POST " enctype="multipart/form-data ">
-                                    <input class="form-control " type="file " name="textFile " id="formFile " />
-                                    <input class="btn btn-primary " type="submit " value="Submit " name="submit " />
+                                <form action="{{url_for('getFile')}}" id="form_file" name="fileinfo" method="POST" enctype="multipart/form-data">
+                                    <input class="form-control" type="file" name="textFile" id="formFile" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
 
                                 </form>
 
@@ -197,22 +197,22 @@
         </div>
 
         <!--URL UPLOAD SUMMARY-->
-        <div class="boxed-page overlay bg-fixed ">
-            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc2 ">
+        <div class="boxed-page overlay bg-fixed">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc2">
 
-                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
-                <span class="lnr lnr-link "></span>
-                <div class="hover_bkgr_fricc2 ">
-                    <span class="helper "></span>
-                    <div class="popup_content ">
-                        <div class="popupCloseButton2 ">&times;</div>
-                        <div class="row ">
-                            <div class="col-29 ">
-                                <label for="formurl " class="form-label " style="font-size: 27px;left:233px; ">Give the URL of article</label>
+                <span class="number" data-from="0" data-to="34" data-refresh-interval="100"></span>
+                <span class="lnr lnr-link"></span>
+                <div class="hover_bkgr_fricc2">
+                    <span class="helper"></span>
+                    <div class="popup_content2">
+                        <div class="popupCloseButton2">&times;</div>
+                        <div class="row">
+                            <div class="col-29">
+                                <label for="formurl" id="form-label">Give the URL of article</label>
 
-                                <form action="{{url_for( 'uploadUrl')}} " id="form_url " name="urlinfo " method="POST " enctype="multipart/form-data ">
-                                    <input class="form-control " type="input " name="url " id="formFile " />
-                                    <input class="btn btn-primary " type="submit " value="Submit " name="submit " />
+                                <form action="{{url_for( 'uploadUrl')}}" id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
+                                    <input class="form-control" type="input" name="url" id="formFile" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
 
                                 </form>
 
@@ -224,26 +224,26 @@
 
 
 
-                <h4>Upload File</h4>
+                <h4>Give URL</h4>
             </div>
 
         </div>
-        <div class="boxed-page overlay bg-fixed ">
-            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc3 ">
+        <div class="boxed-page overlay bg-fixed">
+            <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc3">
 
-                <span class="number " data-from="0 " data-to="34 " data-refresh-interval="100 "></span>
-                <span class="lnr lnr-text-size "></span>
-                <div class="hover_bkgr_fricc3 ">
-                    <span class="helper "></span>
-                    <div class="popup_content3 ">
-                        <div class="popupCloseButton3 ">&times;</div>
-                        <div class="row ">
-                            <div class="col-29 ">
-                                <label for="formurl " class="form-label " style="font-size: 27px;left:233px; ">Enter the text.</label>
+                <span class="number" data-from="0" data-to="34" data-refresh-interval="100"></span>
+                <span class="lnr lnr-text-size"></span>
+                <div class="hover_bkgr_fricc3">
+                    <span class="helper"></span>
+                    <div class="popup_content3">
+                        <div class="popupCloseButton3">&times;</div>
+                        <div class="row">
+                            <div class="col-29">
+                                <label for="formurl" id="form-label" style="font-size: 27px;left:233px;">Enter the text.</label>
 
-                                <form action="{{url_for( 'uploadUrl')}} " id="form_url " name="urlinfo " method="POST " enctype="multipart/form-data ">
-                                    <input class="form-control " type="input " name="url " id="formFile " />
-                                    <input class="btn btn-primary " type="submit " value="Submit " name="submit " />
+                                <form action="{{url_for( 'uploadUrl')}} " id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
+                                    <input class="form-control" type="input" name="url" id="formFile" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
 
                                 </form>
 
@@ -255,7 +255,7 @@
 
 
 
-                <h4>Upload File</h4>
+                <h4>Give Text</h4>
             </div>
 
         </div>

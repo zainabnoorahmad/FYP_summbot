@@ -91,13 +91,13 @@ body:after {}
 .hover_bkgr_fricc1 {
     background: transparent;
     cursor: pointer;
-    height: 447px;
+    height: 511px;
     position: absolute;
     text-align: center;
-    top: -408px;
-    width: 760px;
+    top: -472px;
+    width: 797px;
     display: none;
-    margin-left: -363px;
+    margin-left: -418px;
     color: black;
     left: 239px;
 }
@@ -105,29 +105,29 @@ body:after {}
 .hover_bkgr_fricc2 {
     background: transparent;
     cursor: pointer;
-    height: 447px;
+    height: 511px;
     position: absolute;
     text-align: center;
-    top: -408px;
-    width: 760px;
+    top: -472px;
+    width: 797px;
     display: none;
-    margin-left: -363px;
+    margin-left: -418px;
     color: black;
-    left: -142px;
+    left: 239px;
 }
 
 .hover_bkgr_fricc3 {
     background: transparent;
     cursor: pointer;
-    height: 447px;
+    height: 511px;
     position: absolute;
     text-align: center;
-    top: -408px;
-    width: 760px;
+    top: -472px;
+    width: 797px;
     display: none;
-    margin-left: -363px;
+    margin-left: -418px;
     color: black;
-    left: -142px;
+    left: 239px;
 }
 
 .hover_bkgr_fricc1 .helper {
@@ -267,8 +267,9 @@ body:after {}
 .popup_content1 form,
 .popup_content2 form,
 .popup_content3 form {
-    left: 233px;
+    left: 216px;
     position: relative;
+    top: 96px;
 }
 
 
@@ -415,6 +416,12 @@ a:hover {
 
 .btn-link:hover {
     text-decoration: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #5a2f5f;
+    border-color: #5b2c5b;
 }
 
 .color-primary {
@@ -1435,4 +1442,10 @@ footer {
     100% {
         transform: rotate(360deg);
     }
+}
+
+#form-label {
+    left: 229px;
+    position: relative;
+    top: 62px;
 }
