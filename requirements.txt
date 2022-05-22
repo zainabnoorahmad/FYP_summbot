@@ -40,7 +40,6 @@ fonttools==4.29.1
 fuzzywuzzy==0.18.0
 gast==0.5.3
 gensim==0.12.3
-gm-submodular==0.1
 google==3.0.0
 google-api-core==2.5.0
 google-api-python-client==2.38.0
