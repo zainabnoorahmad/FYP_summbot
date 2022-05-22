@@ -39,7 +39,7 @@ huggingface-hub==0.6.0
 ipdb==0.13.9
 ipykernel==6.10.0
 ipython==8.2.0
-itsdangerous==2.0.1
+ 
  
  
  
@@ -91,17 +91,17 @@ tld==0.12.6
  
  
 trafilatura==1.1.0
-traitlets==5.1.1
-transformers==4.19.1
+ 
+ 
  
  
 typing_extensions==4.1.1
  
 uritemplate==4.1.1
 urllib3==1.26.8
-w3lib==1.22.0
-wasabi==0.9.1
-wcwidth==0.2.5
+ 
+ 
+ 
 webdriver-manager==3.5.4
 webencodings==0.5.1
 websockets==10.3
