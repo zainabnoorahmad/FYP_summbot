@@ -413,6 +413,25 @@ def uploadUrl():
         return render_template("textFile.html",text=summary_url)
 
 
+@app.route('/textSummarization', methods = ['GET', 'POST'])
+def textSummarization():
+    if request.method == 'POST':
+        textinput=req.form['textinput']
+        #print(url)
+        #text=getText(url)
+        summary_text=Summarize(textinput)
+        return render_template("textFile.html",text=summary_text)
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/replace1', methods = ['GET', 'POST'])
 def replace1():
     

@@ -241,8 +241,8 @@
                             <div class="col-29">
                                 <label for="formurl" id="form-label" style="font-size: 27px;left:233px;">Enter the text.</label>
 
-                                <form action="{{url_for( 'uploadUrl')}} " id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
-                                    <input class="form-control" type="input" name="url" id="formFile" />
+                                <form action="{{url_for( 'textSummarization')}} " id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
+                                    <input class="form-control" type="input" name="textinput" id="formFile" />
                                     <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
 
                                 </form>
