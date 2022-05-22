@@ -1379,10 +1379,6 @@ footer {
 
 .tab-content {}
 
-#keyword1 {
-    display: block;
-}
-
 .card {
     position: relative;
     display: -ms-flexbox;

@@ -51,6 +51,14 @@
             loader.style.display = 'block';
 
         }
+
+        function showLoader3() {
+            console.log("indise show loader")
+            loader3 = document.getElementById('loader');
+
+            loader3.style.display = 'block';
+
+        }
         var slider = $('#max_words')
         slider.on('change mousemove', function(evt) {
             $('#label_max_words').text('# words in summary: ' + slider.val())
@@ -106,16 +114,15 @@
         <video autoplay muted src="../static/loader3.mp4"></video>
         <div id="loader2"></div>
     </div>
-
+    <div id="loader3"></div>
     <div class="main">
-        <div class="  text-center ">
-            <h1 class="display-2 mb-4 summbot ">SummBot </h1>
+        <div class="text-center">
+            <h1 class="display-2 mb-4 summbot">SummBot </h1>
             <div class="tool">Text Summarization Tool</div>
 
             <form action="{{url_for('Url')}}" method="post">
                 <div class="form__group field">
                     <!--new input bar bootstrap-->
-                    <img onclick="startDictation()" src="../static/icons8-microphone-24.png" />
                     <span id='clickableAwesomeFont'><i class="fa fa-microphone" onclick="startDictation()"></i></span>
 
                     <div class="form_input_field">
@@ -178,7 +185,7 @@
 
                                 <form action="{{url_for('getFile')}}" id="form_file" name="fileinfo" method="POST" enctype="multipart/form-data">
                                     <input class="form-control" type="file" name="textFile" id="formFile" />
-                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" onsubmit="showLoader3()" />
 
                                 </form>
 
@@ -201,7 +208,8 @@
             <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc2">
 
                 <span class="number" data-from="0" data-to="34" data-refresh-interval="100"></span>
-                <span class="lnr lnr-link"></span>
+
+                <i class="lnr lnr-link"></i>
                 <div class="hover_bkgr_fricc2">
                     <span class="helper"></span>
                     <div class="popup_content2">
@@ -212,7 +220,7 @@
 
                                 <form action="{{url_for( 'uploadUrl')}}" id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
                                     <input class="form-control" type="input" name="url" id="formFile" />
-                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" onsubmit="showLoader3()" />
 
                                 </form>
 
@@ -232,7 +240,8 @@
             <div class="col-md-1 col-sm-6 counter-item trigger_popup_fricc3">
 
                 <span class="number" data-from="0" data-to="34" data-refresh-interval="100"></span>
-                <span class="lnr lnr-text-size"></span>
+                <i class="lnr lnr-text-size"></i>
+
                 <div class="hover_bkgr_fricc3">
                     <span class="helper"></span>
                     <div class="popup_content3">
@@ -243,7 +252,7 @@
 
                                 <form action="{{url_for( 'textSummarization')}} " id="form_url" name="urlinfo" method="POST" enctype="multipart/form-data">
                                     <input class="form-control" type="input" name="textinput" id="formFile" />
-                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" name="submit" onclick="showLoader3()" />
 
                                 </form>
 

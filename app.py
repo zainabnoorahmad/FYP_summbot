@@ -380,7 +380,7 @@ def getFile():
             f.close()
     summary=Summarize(contents)
 
-    return render_template("textFile.html",text=summary)
+    return render_template("textFile.html",original=contents,text=summary)
 
 
 
@@ -410,7 +410,7 @@ def uploadUrl():
         #print(url)
         text=getText(url)
         summary_url=Summarize(text)
-        return render_template("textFile.html",text=summary_url)
+        return render_template("textFile.html",original=url,text=summary_url)
 
 
 @app.route('/textSummarization', methods = ['GET', 'POST'])
@@ -420,7 +420,7 @@ def textSummarization():
         #print(url)
         #text=getText(url)
         summary_text=Summarize(textinput)
-        return render_template("textFile.html",text=summary_text)
+        return render_template("textFile.html",original=textinput,text=summary_text)
 
 
 
