@@ -71,7 +71,7 @@ pyquery==1.4.3
 python-dateutil==2.8.2
 pytweening==1.0.4
  
-pywin32==303
+ 
  
 readability-lxml==0.8.1
 regex==2022.3.2
