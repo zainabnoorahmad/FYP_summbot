@@ -55,10 +55,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-
+    <script>responsiveVoice.setDefaultVoice("US English Female");  </script>
+   
+    
 
 
     <script>
+
         var counter1 = 0
         var counter2 = 0
         var counter3 = 0
@@ -256,9 +259,29 @@
                                 </div>
                             </ul>
                             <div class="tab-content">
-                                <div id="summary1" class='tab-pane fade in active'>
+                                <div  class='tab-pane fade in active'>
 
-                                    <div class='row'>{{result1}}
+                                    <div class='row'><span  id="summary1"></span>
+                                        <script>
+                                            //document.getElementById("d1").innerHTML = "HTML";
+                                            var str = "{{result1}}";
+                                            s_array = str.split(" ");
+                                            var keyword_query_string = "{{k}}";
+                                            keywords= keyword_query_string.split(" ");
+                                            length = s_array.length;
+                                            length2 = keywords.length;
+                                            s_new = "";
+                                            
+    
+                                            for (let i = 0; i < length; i++) {
+                                            for (let j = 0; j < length2; j++){
+                                                if((s_array[i].toLowerCase()) ==(keywords[j].toLowerCase()))
+                                                {s_array[i] = "<span style='color:white;background:purple;'>"+s_array[i]+ "</span>";}
+                                                }}
+                                            s_new = s_array.join(" ");
+                                            document.getElementById("summary1").innerHTML = s_new;
+                                            
+                                        </script>
                                         <div class="url">{{url1}}</div>
                                     </div>
 
@@ -308,9 +331,30 @@
                                 </div>
                             </ul>
                             <div class="tab-content">
-                                <div id="summary2" class='tab-pane fade in active'>
+                                <div  class='tab-pane fade in active'>
 
-                                    <div class='row' id="summary2">{{result2}}
+                                    <div class='row' >
+                                        <span  id="summary2"></span>
+                                        <script>
+                                            //document.getElementById("d1").innerHTML = "HTML";
+                                            var str = "{{result2}}";
+                                            s_array = str.split(" ");
+                                            var keyword_query_string = "{{k}}";
+                                            keywords= keyword_query_string.split(" ");
+                                            length = s_array.length;
+                                            length2 = keywords.length;
+                                            s_new = "";
+                                            
+    
+                                            for (let i = 0; i < length; i++) {
+                                            for (let j = 0; j < length2; j++){
+                                                if((s_array[i].toLowerCase()) ==(keywords[j].toLowerCase()))
+                                                {s_array[i] = "<span style='color:white;background:purple;'>"+s_array[i]+ "</span>";}
+                                                }}
+                                            s_new = s_array.join(" ");
+                                            document.getElementById("summary2").innerHTML = s_new;
+                                            
+                                        </script>
                                         <div class="url">{{url1}}</div>
                                     </div>
 
@@ -363,9 +407,30 @@
                                 </div>
                             </ul>
                             <div class="tab-content">
-                                <div id="summary3" class='tab-pane fade in active'>
+                                <div  class='tab-pane fade in active'>
 
-                                    <div class='row' id="summary3">{{result3}}
+                                    <div class='row' >
+                                        <span  id="summary3"></span>
+                                        <script>
+                                            //document.getElementById("d1").innerHTML = "HTML";
+                                            var str = "{{result3}}";
+                                            s_array = str.split(" ");
+                                            var keyword_query_string = "{{k}}";
+                                            keywords= keyword_query_string.split(" ");
+                                            length = s_array.length;
+                                            length2 = keywords.length;
+                                            s_new = "";
+                                            
+    
+                                            for (let i = 0; i < length; i++) {
+                                            for (let j = 0; j < length2; j++){
+                                                if((s_array[i].toLowerCase()) ==(keywords[j].toLowerCase()))
+                                                {s_array[i] = "<span style='color:white;background:purple;'>"+s_array[i]+ "</span>";}
+                                                }}
+                                            s_new = s_array.join(" ");
+                                            document.getElementById("summary3").innerHTML = s_new;
+                                            
+                                        </script>
                                         <div class="url">{{url2}}</div>
                                     </div>
 
@@ -418,9 +483,30 @@
 
                             </ul>
                             <div class="tab-content">
-                                <div id="summary4" class='tab-pane fade in active'>
+                                <div  class='tab-pane fade in active'>
 
-                                    <div class='row' id="summary4">{{result4}}
+                                    <div class='row' >
+                                        <span  id="summary4"></span>
+                                        <script>
+                                            //document.getElementById("d1").innerHTML = "HTML";
+                                            var str = "{{result4}}";
+                                            s_array = str.split(" ");
+                                            var keyword_query_string = "{{k}}";
+                                            keywords= keyword_query_string.split(" ");
+                                            length = s_array.length;
+                                            length2 = keywords.length;
+                                            s_new = "";
+                                            
+    
+                                            for (let i = 0; i < length; i++) {
+                                            for (let j = 0; j < length2; j++){
+                                                if((s_array[i].toLowerCase()) ==(keywords[j].toLowerCase()))
+                                                {s_array[i] = "<span style='color:white;background:purple;'>"+s_array[i]+ "</span>";}
+                                                }}
+                                            s_new = s_array.join(" ");
+                                            document.getElementById("summary4").innerHTML = s_new;
+                                            
+                                        </script>
                                         <div class="url">{{url3}}</div>
                                     </div>
 

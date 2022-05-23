@@ -1,13 +1,14 @@
 import nltk
-nltk.download('omw-1.4')
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
+import yake
+# nltk.download('omw-1.4')
+# nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('wordnet')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
-import yake
+
 
 stop_words = set(stopwords.words('english'))
 
@@ -41,6 +42,8 @@ def join_unique_words(unique_words):
   return unique_word_string 
 
 def keyword_extract(query):
+  print("this prints query")
+  print(query)
   keyword_array=[]
   language = "en"
   max_ngram_size = 1
@@ -48,9 +51,12 @@ def keyword_extract(query):
   numOfKeywords = 20
   custom_kw_extractor = yake.KeywordExtractor(lan=language, n=max_ngram_size, dedupLim=deduplication_threshold, top=numOfKeywords, features=None)
   keywords = custom_kw_extractor.extract_keywords(query)
+  print(keywords)
   for kw in keywords:
     keyword_array.append(kw[0])
-    return keyword_array
+  print("this is keyword array")
+  print(keyword_array)
+  return keyword_array
 
 
 def query_processing(Query):
